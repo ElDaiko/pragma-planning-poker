@@ -27,6 +27,9 @@ body {
 }
 
 .party-container__title-h3 {
+  position: absolute;
+  top: 71px;
+  left: 20px;
   text-align: left;
 }
 
@@ -61,4 +64,9 @@ body {
   line-height: 140%;
   cursor: pointer;
   align-self: center;
+}
+
+.party-button__disabled {
+  opacity: 0.5;
+  cursor: unset;
 }
