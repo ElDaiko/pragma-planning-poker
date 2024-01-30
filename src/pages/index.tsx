@@ -1,30 +1,46 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 
 const Index: FC = () => {
   const [partyName, setPartyName] = useState<string>("");
+  const [validate, setValidate] = useState<string[]>([]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPartyName(event.target.value);
   };
 
   const handleCreateParty = () => {
-    if (!isButtonDisabled) {
+    if (!validate.length) {
       console.log(partyName);
-    }
-    else{
+    } else {
       console.log("error");
     }
   };
 
-  const isButtonDisabled =
-    partyName.trim() === "" ||
-    !(
-      partyName.length >= 5 &&
-      partyName.length <= 20 &&
-      /^[a-zA-Z0-9 ]+$/.test(partyName) &&
-      (partyName.match(/\d/g) || []).length <= 3 &&
-      isNaN(Number(partyName))
-    );
+    useEffect(() => {
+      const errors: string[] = [];
+  
+      if (partyName.trim() === "") {
+        errors.push("El nombre de la partida no puede estar vacío.");
+      }
+      if (!/^[a-zA-Z0-9 ]+$/.test(partyName) && !(partyName.trim() === "")){
+        errors.push("\n No puede tener caracteres especiales. ")
+      }
+      if (!isNaN(Number(partyName)) && !(partyName.trim() === "")) {
+        errors.push("\n No pueden contener solo números")
+      }
+      if (!((partyName.match(/\d/g) || []).length <= 3)){
+        errors.push("\n Debe tener menos de tres números")
+      }
+      if (!(partyName.length >= 5)){
+        errors.push("\n Debe contener más de cinco caracteres")
+      }
+      if (!(partyName.length <= 20)){
+        errors.push("\n Debe de contener menos de veinte caracteres")
+      }
+
+  
+      setValidate(errors);
+    }, [partyName]);
 
   return (
     <div>
@@ -39,12 +55,17 @@ const Index: FC = () => {
         />
         <button
           className={`party-container__button ${
-            isButtonDisabled ? "party-button__disabled" : ""
+            validate.length ? "party-button__disabled" : ""
           }`}
           onClick={handleCreateParty}
         >
           Crear una Partida
         </button>
+        <div>
+          {validate.map((message, index) => (
+            <p key={index}>{message}</p>
+          ))}
+        </div>
       </main>
     </div>
   );
