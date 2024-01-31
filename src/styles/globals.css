@@ -5,6 +5,7 @@ body {
   background: radial-gradient(circle, #31006e, #1f1235);
   color: white;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 .party-logo{
@@ -15,7 +16,6 @@ body {
 .party-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   width: 300px;
   height: 300px;
   padding: 20px;
@@ -28,7 +28,7 @@ body {
 }
 
 .party-container__title-h3 {
-  margin-right: 150px;
+  margin-right: 140px;
   margin-bottom: 0px;
 }
 
@@ -68,4 +68,10 @@ body {
 .party-button__disabled {
   opacity: 0.5;
   cursor: unset;
+}
+
+.validate-message{
+  padding: initial;
+  opacity: 0.8;
+  color: rgb(255, 255, 255);
 }

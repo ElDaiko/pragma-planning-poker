@@ -31,7 +31,7 @@ const Index: FC = () => {
       if (!((partyName.match(/\d/g) || []).length <= 3)){
         errors.push("\n Debe tener menos de tres números")
       }
-      if (!(partyName.length >= 5)){
+      if (!(partyName.length >= 5) && !(partyName.trim() === "")){
         errors.push("\n Debe contener más de cinco caracteres")
       }
       if (!(partyName.length <= 20)){
@@ -59,9 +59,9 @@ const Index: FC = () => {
           }`}
           onClick={handleCreateParty}
         >
-          Crear una Partida
+          Crear Partida
         </button>
-        <div>
+        <div className="validate-message">
           {validate.map((message, index) => (
             <p key={index}>{message}</p>
           ))}
