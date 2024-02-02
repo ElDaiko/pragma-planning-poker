@@ -1,11 +1,20 @@
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const nextConfig = {
   reactStrictMode: true,
+  sassOptions: {
+    includePaths: [path.join(__dirname, 'styles')],
+  },
 
   async redirects() {
     return [
       {
         source: '/',
-        destination: '/poker-creation', // Adjust this path based on your custom home page file
+        destination: '/poker-creation',
         permanent: true,
       },
     ];
@@ -13,3 +22,5 @@ const nextConfig = {
 };
 
 export default nextConfig;
+
+

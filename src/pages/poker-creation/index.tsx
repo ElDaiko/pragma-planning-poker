@@ -29,6 +29,9 @@ const Index = () => {
     if (partyName.trim() != "" ){
       setHasInitialValidation(true)
     }
+    if (!hasInitialValidation) {
+      errors.push(" ");
+    }
     if (partyName.trim() === "" && hasInitialValidation) {
       errors.push("El nombre de la partida no puede estar vacío.");
     }
@@ -67,7 +70,7 @@ const Index = () => {
         />
         <button
           className={`party-container__button ${
-            validate.length ? "party-button__disabled" : ""
+            validate.length || partyName.trim() === "" ? "party-button__disabled" : ""
           }`}
           onClick={handleCreateParty}
         >
