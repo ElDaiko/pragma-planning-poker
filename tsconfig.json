@@ -16,6 +16,8 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/index.tsx", "src/pages/testPage/index.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/poker-creation/index.tsx", "src/pages/testPage/index.jsx"],
   "exclude": ["node_modules"]
 }
+
+

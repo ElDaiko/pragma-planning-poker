@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 const Index = () => {
   const [partyName, setPartyName] = useState("");
   const [validate, setValidate] = useState<string[]>([]);
+  const [hasInitialValidation, setHasInitialValidation] = useState(false);
   const router = useRouter();
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,10 +21,15 @@ const Index = () => {
     }
   };
 
+  
+
   useEffect(() => {
     const errors: string[] = [];
 
-    if (partyName.trim() === "") {
+    if (partyName.trim() != "" ){
+      setHasInitialValidation(true)
+    }
+    if (partyName.trim() === "" && hasInitialValidation) {
       errors.push("El nombre de la partida no puede estar vacío.");
     }
     if (!/^[a-zA-Z0-9 ]+$/.test(partyName) && !(partyName.trim() === "")) {

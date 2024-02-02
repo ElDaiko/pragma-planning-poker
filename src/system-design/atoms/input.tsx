@@ -10,7 +10,6 @@ export default function InputAtom({ id, ...props }: InputAtomProps) {
       <input
         type="text"
         id={id}
-        name={id}
         autoComplete="off"
         {...props}
         className="party-container__input"
