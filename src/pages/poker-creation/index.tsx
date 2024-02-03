@@ -3,12 +3,12 @@ import InputAtom from "@/system-design/atoms/input";
 import ButtonAtom from "@/system-design/atoms/button";
 import { useRouter } from "next/router";
 import styles from '../../styles/poker-creation.module.scss';
+import usePartyNameValidation from "@/hooks/usePartyNameValidation";
 
 const Index = () => {
-  const [partyName, setPartyName] = useState("");
-  const [validate, setValidate] = useState<string[]>([]);
-  const [hasInitialValidation, setHasInitialValidation] = useState(false);
   const router = useRouter();
+  const [partyName, setPartyName] = useState("");
+  const { validate } = usePartyNameValidation(partyName);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPartyName(event.target.value);
@@ -16,43 +16,11 @@ const Index = () => {
 
   const handleCreateParty = () => {
     if (!validate.length) {
-      console.log(partyName);
       router.push(`/poker-table?partyName=${encodeURIComponent(partyName)}`);
     } else {
-      console.log("error");
+      alert("ERROR")
     }
   };
-
-  useEffect(() => {
-    const errors: string[] = [];
-
-    if (partyName.trim() !== "") {
-      setHasInitialValidation(true);
-    }
-    if (!hasInitialValidation) {
-      errors.push("");
-    }
-    if (partyName.trim() === "" && hasInitialValidation) {
-      errors.push("El nombre de la partida no puede estar vacío.");
-    }
-    if (!/^[a-zA-Z0-9 ]+$/.test(partyName) && !(partyName.trim() === "")) {
-      errors.push("\n No puede tener caracteres especiales. ");
-    }
-    if (!isNaN(Number(partyName)) && !(partyName.trim() === "")) {
-      errors.push("\n No pueden contener solo números");
-    }
-    if (!((partyName.match(/\d/g) || []).length <= 3)) {
-      errors.push("\n Debe tener menos de tres números");
-    }
-    if (!(partyName.length >= 5) && !(partyName.trim() === "")) {
-      errors.push("\n Debe contener más de cinco caracteres");
-    }
-    if (!(partyName.length <= 20)) {
-      errors.push("\n Debe de contener menos de veinte caracteres");
-    }
-
-    setValidate(errors);
-  }, [partyName, hasInitialValidation]);
 
   return (
     <div>

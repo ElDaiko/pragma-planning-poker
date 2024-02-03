@@ -1,5 +1,3 @@
-import React, { ComponentProps } from "react";
-
 export default function ButtonAtom({ className, ...props }: any) {
   return (
     <>

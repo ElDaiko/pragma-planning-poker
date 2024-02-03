@@ -6,7 +6,7 @@ interface InputAtomProps extends ComponentProps<"input"> {
 
 export default function InputAtom({ id, className, ...props }: InputAtomProps) {
   return (
-    <div>
+    <>
       <input
         type="text"
         id={id}
@@ -14,7 +14,7 @@ export default function InputAtom({ id, className, ...props }: InputAtomProps) {
         {...props} 
         className={`global__input ${className}`}
       />
-    </div>
+    </>
   );
 }
 
