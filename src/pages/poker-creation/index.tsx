@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import InputAtom from "@/system-design/atoms/input";
 import { useRouter } from "next/router";
+import styles from '../../styles/poker-creation.module.scss';
 
 const Index = () => {
   const [partyName, setPartyName] = useState("");
@@ -21,16 +22,11 @@ const Index = () => {
     }
   };
 
-  
-
   useEffect(() => {
     const errors: string[] = [];
 
-    if (partyName.trim() != "" ){
-      setHasInitialValidation(true)
-    }
-    if (!hasInitialValidation) {
-      errors.push(" ");
+    if (partyName.trim() !== "") {
+      setHasInitialValidation(true);
     }
     if (partyName.trim() === "" && hasInitialValidation) {
       errors.push("El nombre de la partida no puede estar vacío.");
@@ -52,16 +48,16 @@ const Index = () => {
     }
 
     setValidate(errors);
-  }, [partyName]);
+  }, [partyName, hasInitialValidation]);
 
   return (
     <div>
-      <div className="upper-container">
-        <img className="party-logo" src="/images/ficha-de-poker.png" />
-        <h3 className="party-h3">Crear Partida</h3>
+      <div className={styles['upper-container']}>
+        <img className={styles['party-logo']} src="/images/ficha-de-poker.png" />
+        <h3 className={styles['party-h3']}>Crear Partida</h3>
       </div>
-      <main className="party-container">
-        <h3 className="party-container__title-h3">Nombra la partida</h3>
+      <main className={styles['party-container']}>
+        <h3 className={styles['party-container__title-h3']}>Nombra la partida</h3>
         <InputAtom
           id={partyName}
           type="text"
@@ -69,14 +65,14 @@ const Index = () => {
           onChange={handleInputChange} 
         />
         <button
-          className={`party-container__button ${
-            validate.length || partyName.trim() === "" ? "party-button__disabled" : ""
+          className={`${styles['party-container__button']} ${
+            validate.length ? styles['party-button__disabled'] : ""
           }`}
           onClick={handleCreateParty}
         >
           Crear Partida
         </button>
-        <div className="validate-message">
+        <div className={styles['validate-message']}>
           {validate.map((message, index) => (
             <p key={index}>{message}</p>
           ))}
