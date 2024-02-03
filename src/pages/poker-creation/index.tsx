@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import InputAtom from "@/system-design/atoms/input";
+import ButtonAtom from "@/system-design/atoms/button";
 import { useRouter } from "next/router";
 import styles from '../../styles/poker-creation.module.scss';
 
@@ -68,14 +69,14 @@ const Index = () => {
           value={partyName}
           onChange={handleInputChange}
         />
-        <button
+        <ButtonAtom
           className={`${styles['party-container__button']} ${
             validate.length ? styles['party-button__disabled'] : ""
           }`}
           onClick={handleCreateParty}
         >
           Crear Partida
-        </button>
+        </ButtonAtom>
         <div className={styles['validate-message']}>
           {validate.map((message, index) => (
             <p key={index}>{message}</p>

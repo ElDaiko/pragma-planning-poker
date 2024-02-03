@@ -12,7 +12,7 @@ export default function InputAtom({ id, className, ...props }: InputAtomProps) {
         id={id}
         autoComplete="off"
         {...props} 
-        className={`global-container__input ${className}`}
+        className={`global__input ${className}`}
       />
     </div>
   );
