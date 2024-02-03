@@ -61,11 +61,12 @@ const Index = () => {
       </div>
       <main className={styles['party-container']}>
         <h3 className={styles['party-container__title-h3']}>Nombra la partida</h3>
-        <InputAtom
+        <InputAtom 
+          className={styles['party-container__input']}
           id={partyName}
           type="text"
           value={partyName}
-          onChange={handleInputChange} 
+          onChange={handleInputChange}
         />
         <button
           className={`${styles['party-container__button']} ${

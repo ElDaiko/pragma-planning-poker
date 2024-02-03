@@ -4,15 +4,15 @@ interface InputAtomProps extends ComponentProps<"input"> {
   id: string;
 }
 
-export default function InputAtom({ id, ...props }: InputAtomProps) {
+export default function InputAtom({ id, className, ...props }: InputAtomProps) {
   return (
     <div>
       <input
         type="text"
         id={id}
         autoComplete="off"
-        {...props}
-        className="party-container__input"
+        {...props} 
+        className={`global-container__input ${className}`}
       />
     </div>
   );
