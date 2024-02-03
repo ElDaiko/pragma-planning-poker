@@ -28,6 +28,9 @@ const Index = () => {
     if (partyName.trim() !== "") {
       setHasInitialValidation(true);
     }
+    if (!hasInitialValidation) {
+      errors.push("");
+    }
     if (partyName.trim() === "" && hasInitialValidation) {
       errors.push("El nombre de la partida no puede estar vacío.");
     }
