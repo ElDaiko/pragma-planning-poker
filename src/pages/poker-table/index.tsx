@@ -32,7 +32,7 @@ const Index = () => {
       <header className={"upper-container"}>
         <img className={"party-logo"} src="/images/ficha-de-poker.png" />
       </header>
-      <div className={`${styles["test"]}`}>
+      <div className={`${styles["blur"]}`}>
         <main
           className={`${styles["party-container"]} ${styles["glowing-border"]}`}
         >
@@ -73,7 +73,9 @@ const Index = () => {
         </main>
       </div>
       <section>
-        <div className={styles["test2"]}>aaaaaaaaaa</div>
+        <div className={styles["table1"]}></div>
+        <div className={styles["table2"]}></div>
+        <div className={styles["table3"]}></div>
       </section>
       <div className={styles["validate-message"]}>
         {validate.map((message, index) => (
