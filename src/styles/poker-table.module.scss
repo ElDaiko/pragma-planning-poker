@@ -47,8 +47,8 @@
 
   &:checked:before {
     content: "";
-    width: 65%;
-    height: 65%;
+    width: 50%;
+    height: 50%;
     background-color: #ba64fd;
     border-radius: 100%;
     top: 50%;
@@ -62,11 +62,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 20px;
 }
 
 .validate-message {
     position: absolute;
-    top: 70%; /* Coloca el .validate-message justo debajo de .party-container */
+    top: 70%;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -76,7 +77,7 @@
     color: rgb(255, 255, 255);
 }
 
-.party-button__disabled {
+.poker-button__disabled {
     opacity: 0.5;
     cursor: unset;
 }
