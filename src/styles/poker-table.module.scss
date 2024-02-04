@@ -1,8 +1,8 @@
 .party-container {
   display: flex;
   flex-direction: column;
-  width: 500px;
-  height: 300px;
+  width: 514px;
+  height: 294px;
   padding: 20px;
   text-align: center;
   position: absolute;
@@ -62,4 +62,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.validate-message {
+    position: absolute;
+    top: 70%; /* Coloca el .validate-message justo debajo de .party-container */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    padding: initial;
+    opacity: 0.8;
+    color: rgb(255, 255, 255);
+}
+
+.party-button__disabled {
+    opacity: 0.5;
+    cursor: unset;
 }

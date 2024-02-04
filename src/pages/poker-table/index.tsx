@@ -18,16 +18,14 @@ const Index = () => {
     console.log(userName);
   };
 
-  /* const { validate } = usePartyNameValidation(partyName); */
+  const { validate } = usePartyNameValidation(userName);
 
   return (
     <div>
       <header className={"upper-container"}>
         <img className={"party-logo"} src="/images/ficha-de-poker.png" />
       </header>
-      <main
-        className={`${styles["party-container"]} ${styles["glowing-border"]}`}
-      >
+      <main className={`${styles["party-container"]} ${styles["glowing-border"]}`}>
         <h3 className={styles["user-container__title-h3"]}>Tu nombre</h3>
         <InputAtom
           id={userName}
@@ -38,21 +36,23 @@ const Index = () => {
         <div className={`${styles["poker-radio_flex"]}`}>
           <p>Jugador</p>
           <input className={`${styles["my-radio-input"]}`}></input>
-          <p style={{ marginLeft: '40px' }}>Espectador</p>
+          <p style={{ marginLeft: "40px" }}>Espectador</p>
           <input className={`${styles["my-radio-input"]}`}></input>
         </div>
         <ButtonAtom
-          className={`${styles["user-container__button"]}`}
+          className={`${styles['user-container__button']} ${
+            validate.length ? styles['party-button__disabled'] : ""
+          }`}
           onClick={handleCreateParty}
         >
-          Continuar
+          Crear Partida
         </ButtonAtom>
-        {/* <div className={styles['validate-message']}>
-          {validate.map((message, index) => (
-            <p key={index}>{message}</p>
-          ))}
-        </div> */}
       </main>
+      <div className={styles["validate-message"]}>
+        {validate.map((message, index) => (
+          <p key={index}>{message}</p>
+        ))}
+      </div>
     </div>
   );
 };
