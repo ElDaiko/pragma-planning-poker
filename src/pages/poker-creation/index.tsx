@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import InputAtom from "@/system-design/atoms/input";
 import ButtonAtom from "@/system-design/atoms/button";
 import { useRouter } from "next/router";
@@ -24,10 +24,10 @@ const Index = () => {
 
   return (
     <div>
-      <div className={styles['upper-container']}>
-        <img className={styles['party-logo']} src="/images/ficha-de-poker.png" />
+      <header className={'upper-container'}>
+        <img className={'party-logo'} src="/images/ficha-de-poker.png" />
         <h3 className={styles['party-h3']}>Crear Partida</h3>
-      </div>
+      </header>
       <main className={styles['party-container']}>
         <h3 className={styles['party-container__title-h3']}>Nombra la partida</h3>
         <InputAtom 

@@ -8,6 +8,16 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+.upper-container {
+  display: flex;
+  align-items: center;
+}
+
+.party-logo {
+  margin-left: 80px;
+  margin-top: 35px;
+}
+
 .global__input {
   border: 1px solid var(--secondary-30-purple-secondary-purple-300, #BB65FF);
   background: var(--Opacity-Primary-purple-500-Opacity-100, rgba(100, 41, 205, 0.08));
@@ -16,6 +26,8 @@ body {
   font-size: 14px;
   height: 40px;
   border-radius: 100px;
+  width: 292px;
+  margin-top: 10px;
 }
 
 .global__button{
