@@ -12,13 +12,14 @@
   align-items: center;
   background-color: #1f0d3f;
   justify-content: center;
+  z-index: 4;
 }
 
 .glowing-border {
-  border: 1px solid #bb6dff; /* Establece tu color de borde */
-  border-radius: 25px; /* Ajusta según sea necesario */
-  padding: 10px; /* Ajusta según sea necesario */
-  box-shadow: 0 0 50px 0 #44198a, inset 0 0 10px 0 #44198a; /* Aplica resplandor y efecto de inserción */
+  border: 1px solid #bb6dff;
+  border-radius: 25px;
+  padding: 10px;
+  box-shadow: 0 0 50px 0 #44198a, inset 0 0 10px 0 #44198a;
 }
 
 .user-container__title-h3 {
@@ -59,25 +60,56 @@
 }
 
 .poker-radio_flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .validate-message {
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    padding: initial;
-    opacity: 0.8;
-    color: rgb(255, 255, 255);
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  padding: initial;
+  opacity: 0.8;
+  color: rgb(255, 255, 255);
+  z-index: 4;
 }
 
 .poker-button__disabled {
-    opacity: 0.5;
-    cursor: unset;
+  opacity: 0.5;
+  cursor: unset;
+}
+
+.test {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  backdrop-filter: blur(6px);
+  background-color: rgb(0 0 0 / 43%);
+  z-index: 3;
+}
+
+.test2 {
+  border: 1px solid #bb6dff;
+  border-radius: 261px;
+  box-shadow: 0 0 50px 0 #44198a, inset 0 0 10px 0 #44198a;
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  height: 328px;
+  padding: 20px;
+  text-align: center;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
 }
