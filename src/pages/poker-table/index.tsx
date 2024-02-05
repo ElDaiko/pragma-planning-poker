@@ -38,21 +38,21 @@ const Index = () => {
       </header>
 
       {!blur ? (
-        <div className={`${styles["blur"]}`}>
+        <div className={`${styles["card__blur"]}`}>
           <section
-            className={`${styles["party-container"]} ${styles["glowing-border"]}`}
+            className={`${styles["container-party"]} ${styles["container-border__glow"]}`}
           >
-            <h3 className={styles["user-container__title-h3"]}>Tu nombre</h3>
+            <h3 className={styles["card-title__h3"]}>Tu nombre</h3>
             <InputAtom
               id={userName}
               type="text"
               value={userName}
               onChange={handleInputChange}
             />
-            <div className={`${styles["poker-radio_flex"]}`}>
+            <div className={`${styles["card-radioInput__position"]}`}>
               <label>Jugador</label>
               <input
-                className={`${styles["my-radio-input"]}`}
+                className={`${styles["card-radioInput"]}`}
                 type="radio"
                 value="jugador"
                 checked={selectedOption === "jugador"}
@@ -61,7 +61,7 @@ const Index = () => {
 
               <label style={{ marginLeft: "40px" }}>Espectador</label>
               <input
-                className={`${styles["my-radio-input"]}`}
+                className={`${styles["card-radioInput"]}`}
                 type="radio"
                 value="espectador"
                 checked={selectedOption === "espectador"}
@@ -69,8 +69,8 @@ const Index = () => {
               />
             </div>
             <ButtonAtom
-              className={`${styles["user-container__button"]} ${
-                validate.length ? styles["poker-button__disabled"] : ""
+              className={`${styles["card-button__size"]} ${
+                validate.length ? styles["card-button__disabled"] : ""
               }`}
               onClick={handleCreateParty}
             >
@@ -89,7 +89,7 @@ const Index = () => {
       <section>
         <h1>CARTAS</h1>
       </section>
-      <div className={styles["validate-message"]}>
+      <div className={styles["map-message__position"]}>
         {validate.map((message, index) => (
           <p key={index}>{message}</p>
         ))}
