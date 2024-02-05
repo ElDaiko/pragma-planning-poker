@@ -21,7 +21,7 @@ const Index = () => {
   };
 
   const handleCreateParty = () => {
-    if ( selectedOption != "") {
+    if ( selectedOption != "" && !validate.length) {
       console.log(partyName);
       console.log(userName);
       console.log(selectedOption);
@@ -81,10 +81,13 @@ const Index = () => {
       ) : (
         <></>
       )}
-      <section>
+      <section className={styles["table-container"]}>
         <div className={styles["table1"]}></div>
         <div className={styles["table2"]}></div>
         <div className={styles["table3"]}></div>
+      </section>
+      <section>
+        <h1>CARTAS</h1>
       </section>
       <div className={styles["validate-message"]}>
         {validate.map((message, index) => (
