@@ -46,7 +46,7 @@ const usePartyNameValidation = (partyName: string, additionalError?: string, pok
       errors.push("\n Debe de contener menos de veinte caracteres.");
     }
 
-    if (poker && additionalError ==="") {
+    if (poker && additionalError ==="" && hasInitialValidation) {
       errors.push("\n Debes de escoger entre jugador o espectador.");
     }
 
