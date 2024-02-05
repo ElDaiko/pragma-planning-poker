@@ -3,13 +3,15 @@ import { useState, useEffect } from 'react';
 interface PartyNameValidationHook {
   validate: string[];
   hasInitialValidation: boolean;
+  additionalError?: string;
+  poker?: boolean;
 }
 
-const usePartyNameValidation = (partyName: string): PartyNameValidationHook => {
-    const [validate, setValidate] = useState<string[]>([]);
-    const [hasInitialValidation, setHasInitialValidation] = useState<boolean>(false);
+const usePartyNameValidation = (partyName: string, additionalError?: string, poker?: boolean): PartyNameValidationHook => {
+  const [validate, setValidate] = useState<string[]>([]);
+  const [hasInitialValidation, setHasInitialValidation] = useState<boolean>(false);
 
-useEffect(() => {
+  useEffect(() => {
     const errors = [];
 
     if (partyName.trim() !== "") {
@@ -29,29 +31,32 @@ useEffect(() => {
     }
 
     if (!isNaN(Number(partyName)) && !(partyName.trim() === "")) {
-      errors.push("\n No pueden contener solo números");
+      errors.push("\n No pueden contener solo números.");
     }
 
     if (!((partyName.match(/\d/g) || []).length <= 3)) {
-      errors.push("\n Debe tener menos de tres números");
+      errors.push("\n Debe tener menos de tres números.");
     }
 
     if (!(partyName.length >= 5) && !(partyName.trim() === "")) {
-      errors.push("\n Debe contener más de cinco caracteres");
+      errors.push("\n Debe contener más de cinco caracteres.");
     }
 
     if (!(partyName.length <= 20)) {
-      errors.push("\n Debe de contener menos de veinte caracteres");
+      errors.push("\n Debe de contener menos de veinte caracteres.");
+    }
+
+    if (poker && additionalError ==="") {
+      errors.push("\n Debes de escoger entre jugador o espectador.");
     }
 
     setValidate(errors);
-  }, [partyName, hasInitialValidation]);
+  }, [partyName, hasInitialValidation, additionalError]);
 
-  return { validate, hasInitialValidation };
+  return { validate, hasInitialValidation, additionalError };
 };
 
 export default usePartyNameValidation;
-
 
 
 

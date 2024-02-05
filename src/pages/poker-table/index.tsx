@@ -21,13 +21,15 @@ const Index = () => {
   };
 
   const handleCreateParty = () => {
-    console.log(partyName);
-    console.log(userName);
-    console.log(selectedOption);
-    setBlur(true);
+    if ( selectedOption != "") {
+      console.log(partyName);
+      console.log(userName);
+      console.log(selectedOption);
+      setBlur(true);
+    }
   };
 
-  const { validate } = usePartyNameValidation(userName);
+  const { validate } = usePartyNameValidation(userName, selectedOption, true);
 
   return (
     <div>
