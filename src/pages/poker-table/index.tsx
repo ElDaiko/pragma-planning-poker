@@ -10,6 +10,7 @@ const Index = () => {
   const { partyName } = router.query;
   const [userName, setUserName] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
+  const [blur, setBlur] = useState(false);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserName(event.target.value);
@@ -23,6 +24,7 @@ const Index = () => {
     console.log(partyName);
     console.log(userName);
     console.log(selectedOption);
+    setBlur(true);
   };
 
   const { validate } = usePartyNameValidation(userName);
@@ -32,46 +34,51 @@ const Index = () => {
       <header className={"upper-container"}>
         <img className={"party-logo"} src="/images/ficha-de-poker.png" />
       </header>
-      <div className={`${styles["blur"]}`}>
-        <main
-          className={`${styles["party-container"]} ${styles["glowing-border"]}`}
-        >
-          <h3 className={styles["user-container__title-h3"]}>Tu nombre</h3>
-          <InputAtom
-            id={userName}
-            type="text"
-            value={userName}
-            onChange={handleInputChange}
-          />
-          <div className={`${styles["poker-radio_flex"]}`}>
-            <label>Jugador</label>
-            <input
-              className={`${styles["my-radio-input"]}`}
-              type="radio"
-              value="jugador"
-              checked={selectedOption === "jugador"}
-              onChange={handleRadioChange}
-            />
 
-            <label style={{ marginLeft: "40px" }}>Espectador</label>
-            <input
-              className={`${styles["my-radio-input"]}`}
-              type="radio"
-              value="espectador"
-              checked={selectedOption === "espectador"}
-              onChange={handleRadioChange}
-            />
-          </div>
-          <ButtonAtom
-            className={`${styles["user-container__button"]} ${
-              validate.length ? styles["poker-button__disabled"] : ""
-            }`}
-            onClick={handleCreateParty}
+      {!blur ? (
+        <div className={`${styles["blur"]}`}>
+          <section
+            className={`${styles["party-container"]} ${styles["glowing-border"]}`}
           >
-            Crear Partida
-          </ButtonAtom>
-        </main>
-      </div>
+            <h3 className={styles["user-container__title-h3"]}>Tu nombre</h3>
+            <InputAtom
+              id={userName}
+              type="text"
+              value={userName}
+              onChange={handleInputChange}
+            />
+            <div className={`${styles["poker-radio_flex"]}`}>
+              <label>Jugador</label>
+              <input
+                className={`${styles["my-radio-input"]}`}
+                type="radio"
+                value="jugador"
+                checked={selectedOption === "jugador"}
+                onChange={handleRadioChange}
+              />
+
+              <label style={{ marginLeft: "40px" }}>Espectador</label>
+              <input
+                className={`${styles["my-radio-input"]}`}
+                type="radio"
+                value="espectador"
+                checked={selectedOption === "espectador"}
+                onChange={handleRadioChange}
+              />
+            </div>
+            <ButtonAtom
+              className={`${styles["user-container__button"]} ${
+                validate.length ? styles["poker-button__disabled"] : ""
+              }`}
+              onClick={handleCreateParty}
+            >
+              Crear Partida
+            </ButtonAtom>
+          </section>
+        </div>
+      ) : (
+        <></>
+      )}
       <section>
         <div className={styles["table1"]}></div>
         <div className={styles["table2"]}></div>
