@@ -15,6 +15,12 @@
   z-index: 4;
 }
 
+.table__title {
+  margin-top: -40px;
+  display: flex;
+  justify-content: center;
+}
+
 .container-border__glow {
   border: 1px solid #bb6dff;
   border-radius: 25px;

@@ -4,6 +4,7 @@ import usePartyNameValidation from "@/hooks/usePartyNameValidation";
 import styles from "../../styles/poker-table.module.scss";
 import InputAtom from "@/system-design/atoms/input";
 import ButtonAtom from "@/system-design/atoms/button";
+import { useUserContext } from "@/hooks/useUserContext";
 
 const Index = () => {
   const router = useRouter();
@@ -11,6 +12,8 @@ const Index = () => {
   const [userName, setUserName] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
   const [blur, setBlur] = useState(false);
+  const { username, setUsername } = useUserContext()
+  
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserName(event.target.value);
@@ -36,6 +39,7 @@ const Index = () => {
       <header className={"upper-container"}>
         <img className={"party-logo"} src="/images/ficha-de-poker.png" />
       </header>
+      <h1 className={`${styles["table__title"]}`}>{partyName}</h1>
 
       {!blur ? (
         <div className={`${styles["card__blur"]}`}>
@@ -81,19 +85,16 @@ const Index = () => {
       ) : (
         <></>
       )}
-      <section className={styles["table-container"]}>
-        <div className={styles["table1"]}></div>
-        <div className={styles["table2"]}></div>
-        <div className={styles["table3"]}></div>
-      </section>
-      <section>
-        <h1>CARTAS</h1>
-      </section>
       <div className={styles["map-message__position"]}>
         {validate.map((message, index) => (
           <p key={index}>{message}</p>
         ))}
       </div>
+      <section className={styles["table-container"]}>
+        <div className={styles["table1"]}></div>
+        <div className={styles["table2"]}></div>
+        <div className={styles["table3"]}></div>
+      </section>
     </div>
   );
 };
