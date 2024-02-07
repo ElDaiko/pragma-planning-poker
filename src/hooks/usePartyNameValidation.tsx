@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useUserContext } from "@/hooks/useUserContext";
 
 interface PartyNameValidationHook {
   validate: string[];
@@ -11,8 +10,6 @@ interface PartyNameValidationHook {
 const usePartyNameValidation = (partyName: string, additionalError?: string, poker?: boolean): PartyNameValidationHook => {
   const [validate, setValidate] = useState<string[]>([]);
   const [hasInitialValidation, setHasInitialValidation] = useState<boolean>(false);
-
-  const { setUsername } = useUserContext(); // Move this outside the useEffect
 
   useEffect(() => {
     const errors = [];
@@ -53,9 +50,8 @@ const usePartyNameValidation = (partyName: string, additionalError?: string, pok
       errors.push("\n Debes de escoger entre jugador o espectador.");
     }
 
-    setUsername("SIKASSSSS");
     setValidate(errors);
-  }, [partyName, hasInitialValidation, additionalError, setUsername]);
+  }, [partyName, hasInitialValidation, additionalError]);
 
   return { validate, hasInitialValidation, additionalError };
 };

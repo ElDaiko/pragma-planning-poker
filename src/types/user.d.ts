@@ -1,4 +1,6 @@
 export interface UserContext {
-    username: string;
-    setUsername: SetState<string>
+    userNameContext: string;
+    setUsernameContext: SetState<string>
+    rolConText: string
+    setRolConText: SetState<string>
 }

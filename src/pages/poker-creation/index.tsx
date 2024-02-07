@@ -4,12 +4,12 @@ import ButtonAtom from "@/system-design/atoms/button";
 import { useRouter } from "next/router";
 import styles from '../../styles/poker-creation.module.scss';
 import usePartyNameValidation from "@/hooks/usePartyNameValidation";
+import { useUserContext } from "@/hooks/useUserContext";
 
 const Index = () => {
   const router = useRouter();
   const [partyName, setPartyName] = useState("");
-  const { validate } = usePartyNameValidation(partyName);
-  
+  const { validate } = usePartyNameValidation(partyName);  
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPartyName(event.target.value);

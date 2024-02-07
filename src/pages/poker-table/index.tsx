@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import usePartyNameValidation from "@/hooks/usePartyNameValidation";
 import styles from "../../styles/poker-table.module.scss";
 import InputAtom from "@/system-design/atoms/input";
@@ -12,7 +12,8 @@ const Index = () => {
   const [userName, setUserName] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
   const [blur, setBlur] = useState(false);
-  const { username, setUsername } = useUserContext()
+  const { userNameContext, setUsernameContext } = useUserContext()
+  const { rolConText, setRolConText } = useUserContext()
   
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,12 +26,18 @@ const Index = () => {
 
   const handleCreateParty = () => {
     if ( selectedOption != "" && !validate.length) {
+      console.log(userNameContext+"contextName");
       console.log(partyName);
-      console.log(userName);
       console.log(selectedOption);
+      console.log(rolConText);
       setBlur(true);
     }
   };
+
+  useEffect(() => {
+    setUsernameContext(userName)
+    setRolConText("ADMIN")
+  }, [userName])
 
   const { validate } = usePartyNameValidation(userName, selectedOption, true);
 
