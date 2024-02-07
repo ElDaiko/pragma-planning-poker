@@ -12,9 +12,8 @@ const Index = () => {
   const [userName, setUserName] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
   const [blur, setBlur] = useState(false);
-  const { userNameContext, setUsernameContext } = useUserContext()
-  const { rolConText, setRolConText } = useUserContext()
-  
+  const { userNameContext, setUsernameContext } = useUserContext();
+  const { rolConText, setRolConText } = useUserContext();
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserName(event.target.value);
@@ -25,8 +24,8 @@ const Index = () => {
   };
 
   const handleCreateParty = () => {
-    if ( selectedOption != "" && !validate.length) {
-      console.log(userNameContext+"contextName");
+    if (selectedOption != "" && !validate.length) {
+      console.log(userNameContext + "contextName");
       console.log(partyName);
       console.log(selectedOption);
       console.log(rolConText);
@@ -35,18 +34,33 @@ const Index = () => {
   };
 
   useEffect(() => {
-    setUsernameContext(userName)
-    setRolConText("ADMIN")
-  }, [userName])
+    setUsernameContext(userName);
+    setRolConText("ADMIN");
+  }, [userName]);
 
   const { validate } = usePartyNameValidation(userName, selectedOption, true);
 
   return (
-    <div>
-      <header className={"upper-container"}>
-        <img className={"party-logo"} src="/images/ficha-de-poker.png" />
+    <div className={`${styles["table-container"]}`}>
+      <header>
+        <img
+          className={`${styles["element1"]} ${styles["table-container-logo"]}`}
+          src="/images/ficha-de-poker.png"
+        />
+        <h1
+          className={`${styles["element2"]} ${styles["table-container-title"]}`}
+        >
+          {partyName}
+        </h1>
       </header>
-      <h1 className={`${styles["table__title"]}`}>{partyName}</h1>
+      <main>
+          <div className={styles["top-chairs"]}>top-chairs</div>
+          <div className={styles["desk"]}></div>
+          <div className={styles["left-chair"]}>left-chair</div>
+          <div className={styles["rigth-chair"]}>rigth-chair</div>
+          <div className={styles["botton-chairs"]}>botton-chairs</div>
+      </main>
+      <footer>bbb</footer>
 
       {!blur ? (
         <div className={`${styles["card__blur"]}`}>
@@ -92,16 +106,16 @@ const Index = () => {
       ) : (
         <></>
       )}
-      <div className={styles["map-message__position"]}>
+      {/* <div className={styles["map-message__position"]}>
         {validate.map((message, index) => (
           <p key={index}>{message}</p>
         ))}
       </div>
-      <section className={styles["table-container"]}>
+      <section>
         <div className={styles["table1"]}></div>
         <div className={styles["table2"]}></div>
         <div className={styles["table3"]}></div>
-      </section>
+      </section> */}
     </div>
   );
 };
