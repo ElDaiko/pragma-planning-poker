@@ -4,10 +4,10 @@ import TableDisplay from "@/components/table-display";
 const Index = () => {
 
   return (
-    <div>
+    <>
       <TableDisplay></TableDisplay>
       <UserForm></UserForm>
-    </div>
+    </>
   );
 };
 
