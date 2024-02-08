@@ -34,9 +34,11 @@ const UserForm = () => {
   };
 
   useEffect(() => {
-    setUsernameContext(userName);
-    setRolConText("ADMIN");
-  }, [userName]);
+    if (blur) {
+      setUsernameContext(userName);
+      setRolConText("ADMIN");
+    }
+  }, [userName, blur]);
 
   const { validate } = usePartyNameValidation(userName, selectedOption, true);
 
