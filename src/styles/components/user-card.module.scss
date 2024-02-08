@@ -5,9 +5,21 @@
   align-items: center;
 }
 
-.card {
+.card-player {
   width: 35px;
   height: 60px;
   border: 2px solid #bc91ff;
   border-radius: 7px;
+}
+
+.card-spectator {
+  display: flex;
+  width: 56px;
+  height: 56px;
+  border-radius: 100px;
+  background-color: #bdbdff;
+  justify-content: center;
+  align-items: center;
+  color: #330072;
+  font-weight: bolder;
 }

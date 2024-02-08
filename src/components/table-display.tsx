@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
-import styles from "../styles/components/poker-table.module.scss";
+import styles from "../styles/components/poker-table.module.scss"
+import styles2 from "../styles/components/user-card.module.scss"
 import { useUserContext } from "@/hooks/useUserContext";
 import Usercard from "@/system-design/atoms/user-card";
 
@@ -8,8 +9,10 @@ import React from "react";
 const TableDisplay = () => {
   const router = useRouter();
   const { partyName } = router.query;
-  const { userNameContext } = useUserContext();
-
+  const { rolConText, userNameContext } = useUserContext();
+  const adminList = []
+  
+  
   return (
     <div className={`${styles["table-container"]}`}>
       <header>
@@ -34,7 +37,7 @@ const TableDisplay = () => {
         <div className={styles["left-chair"]}>left-chair</div>
         <div className={styles["rigth-chair"]}>rigth-chair</div>
         <div className={styles["botton-chairs"]}>
-          <Usercard></Usercard>
+          <Usercard className={rolConText === "espectador" ? styles2["card-spectator"] : styles2["card-player"]}>{rolConText === "espectador" ? <p>{userNameContext.slice(0, 2).toUpperCase()}</p> : <></>}</Usercard>
         </div>
       </main>
       <div className={styles["card-title"]}>

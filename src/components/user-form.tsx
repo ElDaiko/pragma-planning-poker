@@ -8,7 +8,6 @@ import usePartyNameValidation from "@/hooks/usePartyNameValidation";
 
 const UserForm = () => {
   const router = useRouter();
-  const { partyName } = router.query;
   const [blur, setBlur] = useState(false);
   const [userName, setUserName] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
@@ -25,18 +24,15 @@ const UserForm = () => {
 
   const handleCreateParty = () => {
     if (selectedOption != "" && !validate.length) {
-      console.log(userNameContext + "contextName");
-      console.log(partyName);
-      console.log(selectedOption);
-      console.log(rolConText);
       setBlur(true);
     }
   };
 
+
   useEffect(() => {
     if (blur) {
       setUsernameContext(userName);
-      setRolConText("ADMIN");
+      setRolConText(selectedOption);
     }
   }, [userName, blur]);
 
