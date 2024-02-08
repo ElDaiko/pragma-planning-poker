@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import styles from "../styles/components/poker-table.module.scss";
 import { useUserContext } from "@/hooks/useUserContext";
+import Usercard from "@/system-design/atoms/user-card";
 
 import React from 'react';
 
@@ -35,7 +36,7 @@ const TableDisplay = () => {
           <div className={styles["desk3"]}></div>
           <div className={styles["left-chair"]}>left-chair</div>
           <div className={styles["rigth-chair"]}>rigth-chair</div>
-          <div className={styles["botton-chairs"]}>{userNameContext}</div>
+          <Usercard className={styles["botton-chairs"]}></Usercard>
         </main>
           <div className={styles["card-title"]}>
             <h2>Elige una carta 👇</h2>
