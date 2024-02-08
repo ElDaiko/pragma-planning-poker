@@ -52,10 +52,17 @@ const Index = () => {
         >
           {partyName}
         </h1>
+        <button
+          className={`${styles["element3"]} ${styles["invite-button"]}`}
+        >
+          Invitar
+        </button>
       </header>
       <main>
         <div className={styles["top-chairs"]}>top-chairs</div>
         <div className={styles["desk"]}></div>
+        <div className={styles["desk2"]}></div>
+        <div className={styles["desk3"]}></div>
         <div className={styles["left-chair"]}>left-chair</div>
         <div className={styles["rigth-chair"]}>rigth-chair</div>
         <div className={styles["botton-chairs"]}>{userNameContext}</div>

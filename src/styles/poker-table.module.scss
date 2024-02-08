@@ -29,11 +29,11 @@
 .table-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto 1fr 50px 200px ;
+  grid-template-rows: auto 1fr 70px 134px;
   min-height: 100vh;
   min-width: 100vh;
   grid-template-areas:
-    "header header ."
+    "header header header"
     "main main main"
     ". card-title ."
     "footer footer footer";
@@ -53,6 +53,22 @@
 .table-container header .element2 {
   grid-column: 2;
   justify-self: center;
+}
+
+.table-container header .element3 {
+  grid-column: 3;
+  justify-self: center;
+}
+
+.invite-button {
+  height: 39px;
+  width: 154px;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 59px;
+  background: none;
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .table-container main {
@@ -97,6 +113,26 @@
   height: 345px;
 }
 
+.table-container main .desk2 {
+  grid-area: desk;
+  border-radius: 261px;
+  box-shadow: 0 0 50px 0 #44198a, inset 0 0 10px 0 #44198a;
+  margin: auto;
+  border: 2px solid #947ae8;
+  width: 555px;
+  height: 298px;
+}
+
+.table-container main .desk3 {
+  grid-area: desk;
+  border-radius: 261px;
+  box-shadow: 0 0 50px 0 #44198a, inset 0 0 10px 0 #44198a;
+  margin: auto;
+  border: 1px solid #6429cd;
+  width: 521px;
+  height: 272px;
+}
+
 .table-container footer {
   grid-area: footer;
   display: flex;
@@ -124,7 +160,6 @@
   grid-area: card-title;
   text-align: center;
 }
-
 
 .container-border__glow {
   border: 1px solid #bb6dff;
