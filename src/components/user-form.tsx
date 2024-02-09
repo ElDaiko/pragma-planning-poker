@@ -18,6 +18,10 @@ const UserForm = () => {
     setUserName(event.target.value);
   };
 
+  if (selectedOption === ""){
+    setSelectedOption("jugador")
+  }
+
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedOption(event.target.value);
   };
@@ -53,7 +57,7 @@ const UserForm = () => {
                 value={userName}
                 onChange={handleInputChange}
               />
-              <div className={`${styles["card-radioInput__position"]}`}>
+              <div className={`${styles["card-radioInput__position"]}`} >
                 <label>Jugador</label>
                 <input
                   className={`${styles["card-radioInput"]}`}
