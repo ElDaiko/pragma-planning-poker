@@ -31,20 +31,19 @@ const Index = () => {
     <div>
       <header className={'upper-container'}>
         <img className={'party-logo'} src="/images/ficha-de-poker.png" />
-        <h3 className={styles['party-h3']}>Crear Partida</h3>
+        <h3 className={styles['logo-title']}>Crear Partida</h3>
       </header>
-      <main className={styles['party-container']}>
-        <h3 className={styles['party-container__title-h3']}>Nombra la partida</h3>
+      <main className={styles['modal']}>
+        <h3 className={styles['modal-title']}>Nombra la partida</h3>
         <InputAtom 
-          className={styles['party-container__input']}
           id={partyName}
           type="text"
           value={partyName}
           onChange={handleInputChange}
         />
         <ButtonAtom
-          className={`${styles['party-container__button']} ${
-            validate.length ? styles['party-button__disabled'] : ""
+          className={`${styles['modal-button']} ${
+            validate.length ? styles['modal-button__disabled'] : ""
           }`}
           onClick={handleCreateParty}
         >

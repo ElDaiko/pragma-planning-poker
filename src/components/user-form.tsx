@@ -48,9 +48,9 @@ const UserForm = () => {
         <div className={`${styles["general-container"]}`}>
           <div className={`${styles["card__blur"]}`}>
             <section
-              className={`${styles["container-party"]} ${styles["container-border__glow"]}`}
+              className={`${styles["container-party"]} ${styles["container-party__glow"]}`}
             >
-              <h3 className={styles["card-title__h3"]}>Tu nombre</h3>
+              <h3 className={styles["card-title"]}>Tu nombre</h3>
               <InputAtom
                 id={userName}
                 type="text"
