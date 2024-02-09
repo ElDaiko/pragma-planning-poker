@@ -7,7 +7,7 @@ export default function Usercard({ className, ...props }: any) {
   const { userNameContext} = useUserContext();
   return (
     <>
-      <div className={`${styles["card-container"]}`}>
+      <div className={`${styles["card"]}`}>
         <div {...props} className={`${className}`}></div>
         <p>{userNameContext}</p>
       </div>

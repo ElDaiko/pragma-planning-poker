@@ -39,7 +39,7 @@ const TableDisplay = () => {
             <div className={styles["rigth-chair"]}>rigth-chair</div>
             <div className={styles["botton-chairs"]}>
               <Usercard
-                className={rolConText === "espectador"? styles2["card-spectator"]: styles2["card-player"]}>
+                className={rolConText === "espectador"? styles2["card__spectator"]: styles2["card__player"]}>
                 {rolConText === "espectador" ? (<p>{userNameContext.slice(0, 2).toUpperCase()}</p>) : null}
               </Usercard>
             </div>

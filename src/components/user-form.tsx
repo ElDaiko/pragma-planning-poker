@@ -7,12 +7,11 @@ import { useUserContext } from "@/hooks/useUserContext";
 import usePartyNameValidation from "@/hooks/usePartyNameValidation";
 
 const UserForm = () => {
-  const router = useRouter();
   const [blur, setBlur] = useState(false);
   const [userName, setUserName] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
-  const { userNameContext, setUsernameContext } = useUserContext();
-  const { rolConText, setRolConText } = useUserContext();
+  const { setUsernameContext } = useUserContext();
+  const { setRolConText } = useUserContext();
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserName(event.target.value);
@@ -46,21 +45,21 @@ const UserForm = () => {
     <div>
       {!blur ? (
         <div className={`${styles["general-container"]}`}>
-          <div className={`${styles["card__blur"]}`}>
+          <div className={`${styles["modal__blur"]}`}>
             <section
-              className={`${styles["container-party"]} ${styles["container-party__glow"]}`}
+              className={`${styles["modal"]} ${styles["modal-border__glow"]}`}
             >
-              <h3 className={styles["card-title"]}>Tu nombre</h3>
+              <h3 className={styles["modal-title"]}>Tu nombre</h3>
               <InputAtom
                 id={userName}
                 type="text"
                 value={userName}
                 onChange={handleInputChange}
               />
-              <div className={`${styles["card-radioInput__position"]}`} >
+              <div className={`${styles["modal-radioInput__position"]}`} >
                 <label>Jugador</label>
                 <input
-                  className={`${styles["card-radioInput"]}`}
+                  className={`${styles["modal-radioInput"]}`}
                   type="radio"
                   value="jugador"
                   checked={selectedOption === "jugador"}
@@ -69,7 +68,7 @@ const UserForm = () => {
 
                 <label style={{ marginLeft: "40px" }}>Espectador</label>
                 <input
-                  className={`${styles["card-radioInput"]}`}
+                  className={`${styles["modal-radioInput"]}`}
                   type="radio"
                   value="espectador"
                   checked={selectedOption === "espectador"}
@@ -77,8 +76,8 @@ const UserForm = () => {
                 />
               </div>
               <ButtonAtom
-                className={`${styles["card-button__size"]} ${
-                  validate.length ? styles["card-button__disabled"] : ""
+                className={`${styles["modal-button"]} ${
+                  validate.length ? styles["modal-button__disabled"] : ""
                 }`}
                 onClick={handleCreateParty}
               >
