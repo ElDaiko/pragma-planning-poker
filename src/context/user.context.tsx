@@ -1,5 +1,19 @@
 import { ReactElement, createContext, useState } from "react";
 import { UserContext as userContextType } from '../types/user';
+import {io} from 'socket.io-client'
+
+//Meter esto al provider global
+const socket = io("http://localhost:8080", {
+  reconnection: false  //El usuario no se reconecta automatimaticamente
+})
+
+/* |
+socket.id (id del map, que usuario es el admin)
+socket.on
+socket.emit 
+*/
+
+//otro contexto con la info global de la partida
 
 export const UserContext = createContext<userContextType | null>(null);
 
@@ -9,7 +23,7 @@ export function UserProvider({ children }: { children: JSX.Element | ReactElemen
 
   return (
     <UserContext.Provider value={{
-        userNameContext, setUsernameContext, rolConText, setRolConText
+        userNameContext, setUsernameContext, rolConText, setRolConText, socket
     }}>
         {children}
     </UserContext.Provider>
