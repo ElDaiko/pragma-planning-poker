@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import InputAtom from "@/system-design/atoms/input";
 import ButtonAtom from "@/system-design/atoms/button";
-import { useRouter } from "next/router";
 import styles from '../../styles/poker-creation.module.scss';
 import usePartyNameValidation from "@/hooks/usePartyNameValidation";
 import { useUserContext } from "@/hooks/useUserContext";
 import { useCreateParty } from "@/hooks/useCreateParty";
 
 const Index = () => {
-  const router = useRouter();
   const [partyName, setPartyName] = useState("");
   const { validate } = usePartyNameValidation(partyName);
   const { createParty} = useCreateParty()
+  const {setPartyContext} = useUserContext()
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPartyName(event.target.value);
@@ -19,7 +18,7 @@ const Index = () => {
 
   const handleCreateParty = () => {
     if (!validate.length) {
-      //   Petición  
+      setPartyContext(partyName)
       createParty(partyName)
 
       /* router.push(`/poker-table?partyName=${encodeURIComponent(partyName)}`); */

@@ -8,8 +8,7 @@ import React from "react";
 
 const TableDisplay = () => {
   const router = useRouter();
-  const { partyName } = router.query;
-  const { rolConText, userNameContext } = useUserContext();
+  const { rolConText, userNameContext, partyContext } = useUserContext();
   const adminList = [];
 
   return (
@@ -22,7 +21,7 @@ const TableDisplay = () => {
         <h1
           className={`${styles["element2"]} ${styles["table-container-title"]}`}
         >
-          {partyName}
+          {partyContext}
         </h1>
         <button className={`${styles["element3"]} ${styles["invite-button"]}`}>
           Invitar
