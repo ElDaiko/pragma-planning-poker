@@ -1,32 +1,37 @@
 "use client";
-import { AxiosResponse } from "axios";
+import {  AxiosResponse } from "axios";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import axiosCreator from "axios";
 
 export function useCreateParty() {
-  const router = useRouter();
+    const router = useRouter()
 
-  const axios = axiosCreator.create({
-    baseURL: "http://localhost:8080",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+    const axios = axiosCreator.create({
+        baseURL: "http://localhost:8080",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
 
-  async function createParty(classRoomName: string) {
-    try {
-      const response: AxiosResponse<{ partyId: string }> = await axios({
-        url: "/classroom",
-        method: "POST",
-        data: { name: classRoomName },
-      });
-      router.push(`/poker-table/${response.data}`);
-    } catch (error) {
-      if (error) {
-        console.log("ERROR CREANDO SALA");
-      }
+    async function createParty(classRoomName: string) {
+        try {
+            const response: AxiosResponse<{ classRoomId: string }> = await axios({
+                url: "/classroom",
+                method: "POST",
+                data: { "name": classRoomName }
+            })
+
+            const { classRoomId } = response.data;
+            router.push(`/poker-table/${classRoomId}`)
+
+        } catch (error) {
+            if (error) {
+            console.log(error);
+            
+        }
     }
-  }
+    }
+    return { createParty }
 
-  return { createParty };
 }
