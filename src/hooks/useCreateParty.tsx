@@ -15,16 +15,18 @@ export function useCreateParty() {
 
   async function createParty(partyName: string) {
     try {
-      const response: AxiosResponse<{ partyId: string }> = await axios({
-        url: "/classroom",
-        method: "POST",
-        data: { name: partyName },
-      });
-      router.push(`/poker-table/${response.data}`);
+        const response: AxiosResponse<{ classRoomId: string }> = await axios({
+            url: "/classroom",
+            method: "POST",
+            data: { "name": partyName }
+        })
+        const { classRoomId } = response.data;
+        router.push(`/poker-table/${classRoomId}`)
+
     } catch (error) {
-      if (error) {
-        console.log("ERROR CREANDO SALA");
-      }
+        if (error ) {
+            console.log(error);
+        }
     }
   }
 
