@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import styles from "../styles/components/poker-table.module.scss";
 import styles2 from "../styles/components/user-card.module.scss";
 import { useUserContext } from "@/hooks/useUserContext";
@@ -7,9 +6,7 @@ import Usercard from "@/system-design/atoms/user-card";
 import React from "react";
 
 const TableDisplay = () => {
-  const router = useRouter();
   const { rolConText, userNameContext, partyContext } = useUserContext();
-  const adminList = [];
 
   return (
     <div className={`${styles["table-container"]}`}>

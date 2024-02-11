@@ -3,9 +3,7 @@ import { UserContext as userContextType } from '../types/user';
 import {io} from 'socket.io-client'
 
 //Meter esto al provider global
-const socket = io("http://localhost:8080", {
-  reconnection: false  //El usuario no se reconecta automatimaticamente
-})
+
 
 /* |
 socket.id (id del map, que usuario es el admin)
@@ -24,7 +22,7 @@ export function UserProvider({ children }: { children: JSX.Element | ReactElemen
 
   return (
     <UserContext.Provider value={{
-        userNameContext, setUsernameContext, rolConText, setRolConText,partyContext,setPartyContext, socket
+        userNameContext, setUsernameContext, rolConText, setRolConText,partyContext,setPartyContext
     }}>
         {children}
     </UserContext.Provider>

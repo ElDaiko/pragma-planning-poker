@@ -7,5 +7,4 @@ export interface UserContext {
     setRolConText: SetState<string>
     partyContext: string
     setPartyContext: SetState<string>
-    socket: Socket
 }
