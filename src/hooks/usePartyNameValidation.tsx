@@ -14,7 +14,7 @@ const usePartyNameValidation = (partyName: string, additionalError?: string, pok
   useEffect(() => {
     const errors = [];
 
-    if (partyName.trim() !== "") {
+    if (partyName != undefined && partyName.trim() !== "") {
       setHasInitialValidation(true);
     }
 
@@ -22,27 +22,27 @@ const usePartyNameValidation = (partyName: string, additionalError?: string, pok
       errors.push("");
     }
 
-    if (partyName.trim() === "" && hasInitialValidation) {
+    if (partyName != undefined && partyName.trim() === "" && hasInitialValidation) {
       errors.push("El nombre de la partida no puede estar vacío.");
     }
 
-    if (!/^[a-zA-Z0-9 ]+$/.test(partyName) && !(partyName.trim() === "")) {
+    if (partyName != undefined && !/^[a-zA-Z0-9 ]+$/.test(partyName) && !(partyName.trim() === "")) {
       errors.push("\n No puede tener caracteres especiales. ");
     }
 
-    if (!isNaN(Number(partyName)) && !(partyName.trim() === "")) {
+    if (partyName != undefined && !isNaN(Number(partyName)) && !(partyName.trim() === "")) {
       errors.push("\n No pueden contener solo números.");
     }
 
-    if (!((partyName.match(/\d/g) || []).length <= 3)) {
+    if (partyName != undefined && !((partyName.match(/\d/g) || []).length <= 3)) {
       errors.push("\n Debe tener menos de tres números.");
     }
 
-    if (!(partyName.length >= 5) && !(partyName.trim() === "")) {
+    if (partyName != undefined && !(partyName.length >= 5) && !(partyName.trim() === "")) {
       errors.push("\n Debe contener más de cinco caracteres.");
     }
 
-    if (!(partyName.length <= 20)) {
+    if (partyName != undefined && !(partyName.length <= 20)) {
       errors.push("\n Debe de contener menos de veinte caracteres.");
     }
 
