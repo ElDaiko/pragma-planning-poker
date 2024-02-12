@@ -2,17 +2,6 @@ import { ReactElement, createContext, useState } from "react";
 import { UserContext as userContextType } from '../types/user';
 import {io} from 'socket.io-client'
 
-//Meter esto al provider global
-
-
-/* |
-socket.id (id del map, que usuario es el admin)
-socket.on
-socket.emit 
-*/
-
-//otro contexto con la info global de la partida
-
 export const UserContext = createContext<userContextType | null>(null);
 
 export function UserProvider({ children }: { children: JSX.Element | ReactElement | ReactElement[] }) {

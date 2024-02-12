@@ -10,7 +10,6 @@ const Index = () => {
   const [partyName, setPartyName] = useState("");
   const { validate } = usePartyNameValidation(partyName);
   const { createParty} = useCreateParty()
-  const {setPartyContext} = useUserContext()
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPartyName(event.target.value);
@@ -18,9 +17,7 @@ const Index = () => {
 
   const handleCreateParty = () => {
     if (!validate.length) {
-      setPartyContext(partyName)
       createParty(partyName)
-
       /* router.push(`/poker-table?partyName=${encodeURIComponent(partyName)}`); */
 
     } else {

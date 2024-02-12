@@ -7,6 +7,7 @@ import React from "react";
 
 const TableDisplay = () => {
   const { rolConText, userNameContext, partyContext } = useUserContext();
+  
 
   return (
     <div className={`${styles["table-container"]}`}>
