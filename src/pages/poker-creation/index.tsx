@@ -3,7 +3,6 @@ import InputAtom from "@/system-design/atoms/input";
 import ButtonAtom from "@/system-design/atoms/button";
 import styles from '../../styles/poker-creation.module.scss';
 import usePartyNameValidation from "@/hooks/usePartyNameValidation";
-import { useUserContext } from "@/hooks/useUserContext";
 import { useCreateParty } from "@/hooks/useCreateParty";
 
 const Index = () => {

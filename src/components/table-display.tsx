@@ -2,12 +2,13 @@ import styles from "../styles/components/poker-table.module.scss";
 import styles2 from "../styles/components/user-card.module.scss";
 import { useUserContext } from "@/hooks/useUserContext";
 import Usercard from "@/system-design/atoms/user-card";
+import { usePartyContext } from "@/hooks/usePartyContext";
 
 import React from "react";
 
 const TableDisplay = () => {
   const { rolConText, userNameContext, partyContext } = useUserContext();
-  
+  const { playersList } = usePartyContext();
 
   return (
     <div className={`${styles["table-container"]}`}>
@@ -35,9 +36,19 @@ const TableDisplay = () => {
             <div className={styles["left-chair"]}>left-chair</div>
             <div className={styles["rigth-chair"]}>rigth-chair</div>
             <div className={styles["botton-chairs"]}>
+              {playersList.map((username) => (
+                <p key={username._id}>{username.username}</p>
+              ))}
               <Usercard
-                className={rolConText === "espectador"? styles2["card__spectator"]: styles2["card__player"]}>
-                {rolConText === "espectador" ? (<p>{userNameContext.slice(0, 2).toUpperCase()}</p>) : null}
+                className={
+                  rolConText === "espectador"
+                    ? styles2["card__spectator"]
+                    : styles2["card__player"]
+                }
+              >
+                {rolConText === "espectador" ? (
+                  <p>{userNameContext.slice(0, 2).toUpperCase()}</p>
+                ) : null}
               </Usercard>
             </div>
           </>
