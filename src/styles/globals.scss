@@ -20,9 +20,9 @@ body {
 }
 
 .global__input {
-  border: 1px solid var(--secondary-30-purple-secondary-purple-300, #BB65FF);
-  background: var(--Opacity-Primary-purple-500-Opacity-100, rgba(100, 41, 205, 0.08));
-  color: var(--Shades-White-50, #FFF);
+  border: 1px solid #BB65FF;
+  background: rgba(100, 41, 205, 0.08);
+  color: #FFF;
   padding-left: 15px;
   font-size: 14px;
   height: 40px;
