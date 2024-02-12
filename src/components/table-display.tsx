@@ -7,8 +7,8 @@ import { usePartyContext } from "@/hooks/usePartyContext";
 import React from "react";
 
 const TableDisplay = () => {
-  const { rolConText, userNameContext, partyContext } = useUserContext();
-  const { playersList } = usePartyContext();
+  const { rolConText } = useUserContext();
+  const { classroomName } = usePartyContext();
 
   return (
     <div className={`${styles["table-container"]}`}>
@@ -20,7 +20,7 @@ const TableDisplay = () => {
         <h1
           className={`${styles["element2"]} ${styles["table-container-title"]}`}
         >
-          {partyContext}
+          {classroomName}
         </h1>
         <button className={`${styles["element3"]} ${styles["invite-button"]}`}>
           Invitar
@@ -32,25 +32,11 @@ const TableDisplay = () => {
         <div className={styles["desk3"]}></div>
         {rolConText !== "" ? (
           <>
-            <div className={styles["top-chairs"]}>top-chairs</div>
+            {/* <div className={styles["top-chairs"]}>top-chairs</div>
             <div className={styles["left-chair"]}>left-chair</div>
             <div className={styles["rigth-chair"]}>rigth-chair</div>
-            <div className={styles["botton-chairs"]}>
-              {playersList.map((username) => (
-                <p key={username._id}>{username.username}</p>
-              ))}
-              <Usercard
-                className={
-                  rolConText === "espectador"
-                    ? styles2["card__spectator"]
-                    : styles2["card__player"]
-                }
-              >
-                {rolConText === "espectador" ? (
-                  <p>{userNameContext.slice(0, 2).toUpperCase()}</p>
-                ) : null}
-              </Usercard>
-            </div>
+            <div className={styles["botton-chairs"]}>botton-chairs</div> */}
+            <Usercard></Usercard>
           </>
         ) : null}
       </main>

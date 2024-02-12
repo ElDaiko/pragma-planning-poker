@@ -6,12 +6,15 @@ import { usePartyContext } from "@/hooks/usePartyContext";
 const Index = () => {
 
 
-    const { socket, setPlayersList } = usePartyContext()
+    const { socket, setPlayersList, setClassroomName, classroomName } = usePartyContext()
+
   
     useEffect(() => {
         socket.on("join-classroom", function(data){
-          console.log(data.players);
+          console.log(data);
           setPlayersList(data.players)
+          setClassroomName(data.classroom.name)
+          
         })
     }, [])
 

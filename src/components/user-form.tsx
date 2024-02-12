@@ -27,15 +27,15 @@ const UserForm = () => {
   const handleCreateParty = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault() //
     const data = Object.fromEntries(new FormData(e.currentTarget)); //vuelve los inputs del formulario en un objeto literal
-    if (selectedOption != "" && !validate.length) {
+    if (data.type != "" && !validate.length) {
       setBlur(true);
+      setRolConText(data.type);      
+      setUsernameContext(username);
       socket.emit("join-classroom", {
         username,
         type: data.type,
         roomID: router.query.id,
       });
-      
-      console.log(data);
       
       /* setIsUserCreated(true) */
       /* setUsername(data.username); */
@@ -43,13 +43,11 @@ const UserForm = () => {
       /* setType(data.type); */
     }
   };
-
-  useEffect(() => {
+  
+/*   useEffect(() => {
     if (blur) {
-      setUsernameContext(username);
-      setRolConText(selectedOption);
     }
-  }, [username, blur]);
+  }, [username, blur]); */
 
   const { validate } = usePartyNameValidation(username, selectedOption, true);
 
