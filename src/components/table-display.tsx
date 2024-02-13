@@ -8,7 +8,7 @@ import React, { useEffect, useState } from "react";
 
 const TableDisplay = () => {
   const { rolConText } = useUserContext();
-  const { classroomName, playersList, socket  } = usePartyContext();
+  const { classroomName, playersList, socket } = usePartyContext();
   const cardNumbers = typesOfScores["fibonacci"];
   const [card, setCard] = useState<string | null>(null);
 
@@ -17,7 +17,6 @@ const TableDisplay = () => {
       socket.emit("vote", { card: card });
     }
   }, [card]);
-  
 
   return (
     <div className={`${styles["table-container"]}`}>
@@ -55,6 +54,18 @@ const TableDisplay = () => {
           </div>
         ))}
       </footer>
+      <div>
+        {playersList.map((player, index) => (
+          <div key={index}>
+            <p>Jugador: {player.username}</p>
+            {player.vote !== undefined ? (
+              <p>Voto: {player.vote}</p>
+            ) : (
+              <p>Aún no ha votado</p>
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
