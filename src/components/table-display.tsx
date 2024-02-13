@@ -1,14 +1,15 @@
 import styles from "../styles/components/poker-table.module.scss";
-import styles2 from "../styles/components/user-card.module.scss";
 import { useUserContext } from "@/hooks/useUserContext";
 import Usercard from "@/system-design/atoms/user-card";
 import { usePartyContext } from "@/hooks/usePartyContext";
+import { typesOfScores } from "@/utils/score-type";
 
 import React from "react";
 
 const TableDisplay = () => {
   const { rolConText } = useUserContext();
   const { classroomName } = usePartyContext();
+  const cardNumbers = typesOfScores["fibonacci"];
 
   return (
     <div className={`${styles["table-container"]}`}>
@@ -30,22 +31,15 @@ const TableDisplay = () => {
         <div className={styles["desk"]}></div>
         <div className={styles["desk2"]}></div>
         <div className={styles["desk3"]}></div>
-        {rolConText !== "" ? (
-          <>
-            {/* <div className={styles["top-chairs"]}>top-chairs</div>
-            <div className={styles["left-chair"]}>left-chair</div>
-            <div className={styles["rigth-chair"]}>rigth-chair</div>
-            <div className={styles["botton-chairs"]}>botton-chairs</div> */}
-            <Usercard></Usercard>
-          </>
-        ) : null}
+        {rolConText !== "" ? <Usercard></Usercard> : null}
       </main>
       <div className={styles["card-title"]}>
         <h2>Elige una carta 👇</h2>
       </div>
       <footer>
-        <div className={styles["card-numbers"]}>0</div>
-        <div className={styles["card-numbers"]}>1</div>
+        {cardNumbers?.map((number, index) => (
+          <div key={index} className={styles["card-numbers"]}>{number}</div>
+        ))}
       </footer>
     </div>
   );
