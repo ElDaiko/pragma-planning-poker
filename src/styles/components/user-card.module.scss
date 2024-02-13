@@ -11,6 +11,13 @@
     border-radius: 7px;
   }
 
+  &__playerVote{
+    width: 35px;
+    height: 60px;
+    border-radius: 7px;
+    background-color: #bb65ff;
+  }
+
   &__spectator {
     display: flex;
     width: 56px;
