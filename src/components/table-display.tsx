@@ -4,12 +4,20 @@ import Usercard from "@/system-design/atoms/user-card";
 import { usePartyContext } from "@/hooks/usePartyContext";
 import { typesOfScores } from "@/utils/score-type";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const TableDisplay = () => {
   const { rolConText } = useUserContext();
-  const { classroomName } = usePartyContext();
+  const { classroomName, playersList, socket  } = usePartyContext();
   const cardNumbers = typesOfScores["fibonacci"];
+  const [card, setCard] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (card != null) {
+      socket.emit("vote", { card: card });
+    }
+  }, [card]);
+  
 
   return (
     <div className={`${styles["table-container"]}`}>
@@ -38,7 +46,13 @@ const TableDisplay = () => {
       </div>
       <footer>
         {cardNumbers?.map((number, index) => (
-          <div key={index} className={styles["card-numbers"]}>{number}</div>
+          <div
+            onClick={() => setCard(number)}
+            key={index}
+            className={styles["card-numbers"]}
+          >
+            {number}
+          </div>
         ))}
       </footer>
     </div>
