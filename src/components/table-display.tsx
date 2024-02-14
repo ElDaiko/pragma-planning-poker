@@ -18,6 +18,17 @@ const TableDisplay = () => {
     }
   }, [card]);
 
+  console.log(playersList);
+  console.log(rolConText);
+
+  const handleCardClick = (number: any) => {
+    if (rolConText === "player") {
+      setCard(number);
+    } else {
+      console.log("nope");
+    }
+  };
+
   return (
     <div className={`${styles["table-container"]}`}>
       <header>
@@ -38,6 +49,18 @@ const TableDisplay = () => {
         <div className={styles["desk"]}></div>
         <div className={styles["desk2"]}></div>
         <div className={styles["desk3"]}></div>
+        <div>
+          {playersList.map((player, index) => (
+            <div key={index}>
+              <p>Jugador: {player.username}</p>
+              {player.vote !== undefined ? (
+                <p>Voto: {player.vote}</p>
+              ) : (
+                <p>Aún no ha votado</p>
+              )}
+            </div>
+          ))}
+        </div>
         {rolConText !== "" ? <Usercard></Usercard> : null}
       </main>
       <div className={styles["card-title"]}>
@@ -45,27 +68,15 @@ const TableDisplay = () => {
       </div>
       <footer>
         {cardNumbers?.map((number, index) => (
-          <div
-            onClick={() => setCard(number)}
+          <button
+            onClick={() => handleCardClick(number)}
             key={index}
             className={styles["card-numbers"]}
           >
             {number}
-          </div>
+          </button>
         ))}
       </footer>
-      <div>
-        {playersList.map((player, index) => (
-          <div key={index}>
-            <p>Jugador: {player.username}</p>
-            {player.vote !== undefined ? (
-              <p>Voto: {player.vote}</p>
-            ) : (
-              <p>Aún no ha votado</p>
-            )}
-          </div>
-        ))}
-      </div>
     </div>
   );
 };
