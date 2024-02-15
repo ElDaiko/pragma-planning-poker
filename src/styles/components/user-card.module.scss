@@ -9,6 +9,7 @@
     height: 60px;
     border: 2px solid #bc91ff;
     border-radius: 7px;
+    transition: background-color 0.5s
   }
 
   &__playerVote{
@@ -16,6 +17,7 @@
     height: 60px;
     border-radius: 7px;
     background-color: #bb65ff;
+    transition: background-color 0.5s;
   }
 
   &__spectator {

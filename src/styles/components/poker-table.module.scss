@@ -127,6 +127,16 @@
   background-color: #1f1138;
   box-shadow: 0 0 50px 0 #44198a, inset 0 0 10px 0 #44198a;
   border-radius: 10px;
+  transition: background-color 0.5s, transform 0.5s;
+  font-size: 16px;
+  font-weight: bolder;
+
+  &:hover {
+    border: none;
+    background-color: #e4a4ff;
+    color: #330072;
+    transform: translateY(-8px);
+  }
 }
 
 .table-container .card-title {
