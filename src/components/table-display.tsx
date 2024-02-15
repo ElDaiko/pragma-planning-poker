@@ -8,7 +8,7 @@ import React, { useEffect, useState } from "react";
 
 const TableDisplay = () => {
   const { rolConText } = useUserContext();
-  const { classroomName, playersList, socket } = usePartyContext();
+  const { classroomName, socket } = usePartyContext();
   const cardNumbers = typesOfScores["fibonacci"];
   const [card, setCard] = useState<string | null>(null);
 
@@ -17,9 +17,6 @@ const TableDisplay = () => {
       socket.emit("vote", { card: card });
     }
   }, [card]);
-
-  console.log(playersList);
-  console.log(rolConText);
 
   const handleCardClick = (number: any) => {
     if (rolConText === "player") {
@@ -30,40 +27,26 @@ const TableDisplay = () => {
   };
 
   return (
-    <div className={`${styles["table-container"]}`}>
+    <div className={`${styles["container"]}`}>
       <header>
         <img
-          className={`${styles["element1"]} ${styles["table-container-logo"]}`}
+          className={`${styles["container__logo"]}`}
           src="/images/ficha-de-poker.png"
         />
-        <h1
-          className={`${styles["element2"]} ${styles["table-container-title"]}`}
-        >
-          {classroomName}
-        </h1>
-        <button className={`${styles["element3"]} ${styles["invite-button"]}`}>
-          Invitar
-        </button>
+        <h1 className={`${styles["container__title"]}`}>{classroomName}</h1>
+        <div className={`${styles["container__user"]}`}>
+          <button className={`${styles["container__user-invite"]}`}>
+            Invitar
+          </button>
+        </div>
       </header>
       <main>
-        <div className={styles["desk"]}></div>
-        <div className={styles["desk2"]}></div>
-        <div className={styles["desk3"]}></div>
-        <div>
-          {playersList.map((player, index) => (
-            <div key={index}>
-              <p>Jugador: {player.username}</p>
-              {player.vote !== undefined ? (
-                <p>Voto: {player.vote}</p>
-              ) : (
-                <p>Aún no ha votado</p>
-              )}
-            </div>
-          ))}
-        </div>
-        {rolConText !== "" ? <Usercard></Usercard> : null}
+        <div className={styles["container__desk"]}></div>
+        <div className={styles["container__desk2"]}></div>
+        <div className={styles["container__desk3"]}></div>
+        <Usercard></Usercard>
       </main>
-      <div className={styles["card-title"]}>
+      <div className={styles["container__cards-title"]}>
         <h2>Elige una carta 👇</h2>
       </div>
       <footer>
@@ -71,7 +54,7 @@ const TableDisplay = () => {
           <button
             onClick={() => handleCardClick(number)}
             key={index}
-            className={styles["card-numbers"]}
+            className={styles["container__cards"]}
           >
             {number}
           </button>
