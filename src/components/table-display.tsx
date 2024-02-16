@@ -18,14 +18,6 @@ const TableDisplay = () => {
     }
   }, [card]);
 
-  const handleCardClick = (number: any) => {
-    if (rolConText === "player") {
-      setCard(number);
-    } else {
-      console.log("nope");
-    }
-  };
-
   return (
     <div className={`${styles["container"]}`}>
       <header>
@@ -46,20 +38,27 @@ const TableDisplay = () => {
         <div className={styles["container__desk3"]}></div>
         <Usercard></Usercard>
       </main>
-      <div className={styles["container__cards-title"]}>
-        <h2>Elige una carta 👇</h2>
-      </div>
-      <footer>
-        {cardNumbers?.map((number, index) => (
-          <button
-            onClick={() => handleCardClick(number)}
-            key={index}
-            className={styles["container__cards"]}
-          >
-            {number}
-          </button>
-        ))}
-      </footer>
+
+      {rolConText === "player" ? (
+        <>
+          <div className={styles["container__cards-title"]}>
+            <h2>Elige una carta 👇</h2>
+          </div>
+          <footer>
+            {cardNumbers?.map((number, index) => (
+              <button
+                onClick={() => setCard(number)}
+                key={index}
+                className={styles["container__cards"]}
+              >
+                {number}
+              </button>
+            ))}
+          </footer>
+        </>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

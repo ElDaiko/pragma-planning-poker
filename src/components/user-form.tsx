@@ -88,11 +88,11 @@ const UserForm = () => {
       ) : (
         <></>
       )}
-      <div className={styles["map-message__position"]}>
+      {/* <div className={styles["map-message__position"]}>
         {validate.map((message, index) => (
           <p key={index}>{message}</p>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };
