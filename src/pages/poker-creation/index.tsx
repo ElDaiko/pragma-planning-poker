@@ -17,11 +17,7 @@ const Index = () => {
   const handleCreateParty = () => {
     if (!validate.length) {
       createParty(partyName)
-      /* router.push(`/poker-table?partyName=${encodeURIComponent(partyName)}`); */
-
-    } else {
-      alert("ERROR")
-    }
+    } 
   };
 
   return (

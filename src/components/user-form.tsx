@@ -25,7 +25,7 @@ const UserForm = () => {
   }
 
   const handleCreateParty = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault() //
+    e.preventDefault()
     const data = Object.fromEntries(new FormData(e.currentTarget)); //vuelve los inputs del formulario en un objeto literal
     if (data.type != "" && !validate.length) {
       setBlur(true);
@@ -36,18 +36,8 @@ const UserForm = () => {
         type: data.type,
         roomID: router.query.id,
       });
-      
-      /* setIsUserCreated(true) */
-      /* setUsername(data.username); */
-      /* setUsernameContext(data.username) */
-      /* setType(data.type); */
     }
   };
-  
-/*   useEffect(() => {
-    if (blur) {
-    }
-  }, [username, blur]); */
 
   const { validate } = usePartyNameValidation(username, selectedOption, true);
 
@@ -98,11 +88,11 @@ const UserForm = () => {
       ) : (
         <></>
       )}
-      <div className={styles["map-message__position"]}>
+      {/* <div className={styles["map-message__position"]}>
         {validate.map((message, index) => (
           <p key={index}>{message}</p>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

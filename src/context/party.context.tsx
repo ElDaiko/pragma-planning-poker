@@ -19,8 +19,6 @@ export function PartyProvider({ children }: { children: JSX.Element | ReactEleme
     const [owners, setOwners] = useState<string[]>([])
     const [globalTypeOfScores, setGlobalTypeOfScores] = useState<string>("fibonacci")
     const isOwner = owners.includes(socket.id??'') //cuando es undefined utiliza el ""
-
-    console.log(socket.id);
     
 
   return (
