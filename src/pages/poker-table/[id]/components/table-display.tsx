@@ -1,4 +1,4 @@
-import styles from "../styles/components/poker-table.module.scss";
+import styles from "../../../../styles/components/poker-table.module.scss";
 import { useUserContext } from "@/hooks/useUserContext";
 import Usercard from "@/system-design/atoms/user-card";
 import { usePartyContext } from "@/hooks/usePartyContext";

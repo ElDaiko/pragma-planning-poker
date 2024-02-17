@@ -1,5 +1,5 @@
-import UserForm from "@/components/user-form";
-import TableDisplay from "@/components/table-display";
+import UserForm from "@/pages/poker-table/[id]/components/user-form";
+import TableDisplay from "@/pages/poker-table/[id]/components/table-display";
 import { useEffect } from "react";
 import { usePartyContext } from "@/hooks/usePartyContext";
 import { Player } from "@/types/player";

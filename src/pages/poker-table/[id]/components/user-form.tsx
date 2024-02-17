@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useState, useEffect, FormEvent } from "react";
-import styles from "../styles/components/user-form.module.scss";
+import styles from "../../../../styles/components/user-form.module.scss";
 import InputAtom from "@/system-design/atoms/input";
 import ButtonAtom from "@/system-design/atoms/button";
 import { useUserContext } from "@/hooks/useUserContext";
