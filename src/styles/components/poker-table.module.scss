@@ -26,6 +26,17 @@
     justify-self: center;
   }
 
+  &__button-reveal{
+    font-size: 15px;
+    font-weight: bolder;
+    border: none;
+    width: 168px;
+    height: 40px;
+    border-radius: 100px;
+    color: white;
+    background-color: #6429cd;
+  }
+
   &__user {
     grid-column: 3;
     justify-self: center;
@@ -94,6 +105,7 @@
   }
 
   &__desk3 {
+    display: grid;
     grid-area: desk;
     border-radius: 261px;
     box-shadow: 0 0 50px 0 #44198a, inset 0 0 10px 0 #44198a;
@@ -101,6 +113,8 @@
     border: 1px solid #6429cd;
     width: 521px;
     height: 272px;
+    align-content: center;
+    justify-content: center;
   }
 
   & footer {

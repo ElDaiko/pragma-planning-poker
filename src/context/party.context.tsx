@@ -5,6 +5,7 @@ import { ReactElement, createContext, useState } from "react";
 import { PartyContext as partyContextType } from "../types/party";
 import { io } from "socket.io-client";
 import { Player } from "../types/player";
+import { AmountOfVotes } from "@/types/amountVotes";
 
 export const PartyContext = createContext<partyContextType | null>(null);
 
@@ -14,6 +15,8 @@ const socket = io("http://localhost:8080", {
 
 export function PartyProvider({ children }: { children: JSX.Element | ReactElement | ReactElement[] }) {
     const [playersList, setPlayersList] = useState<Player[]>([])
+    const[averageVotes, setAverageVotes] = useState<string | null>(null)
+    const[amountOfVotes, setAmountOfVotes] = useState<AmountOfVotes[]>([])
     const [classroomName, setClassroomName] = useState<string | null>(null)
     const [owners, setOwners] = useState<string[]>([])
     const [globalTypeOfScores, setGlobalTypeOfScores] = useState<string>("fibonacci")
@@ -21,9 +24,7 @@ export function PartyProvider({ children }: { children: JSX.Element | ReactEleme
     
 
   return (
-    <PartyContext.Provider value={{
-        playersList, setPlayersList, socket, classroomName, setClassroomName, isOwner, setOwners, globalTypeOfScores, setGlobalTypeOfScores
-    }}>
+    <PartyContext.Provider value={{playersList, setPlayersList, socket, classroomName, setClassroomName, isOwner, setOwners, globalTypeOfScores, setGlobalTypeOfScores, setAverageVotes, averageVotes, amountOfVotes, setAmountOfVotes}}>
         {children}
     </PartyContext.Provider>
   );

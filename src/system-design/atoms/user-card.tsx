@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../styles/components/user-card.module.scss";
 import { usePartyContext } from "@/hooks/usePartyContext";
 
 export default function Usercard({ className }: any) {
   const { playersList } = usePartyContext();
-  
 
   return (
     <>

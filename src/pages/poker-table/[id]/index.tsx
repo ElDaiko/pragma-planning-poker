@@ -6,11 +6,11 @@ import { Player } from "@/types/player";
 import { Classroom } from "@/types/classroom";
 
 const Index = () => {
-  const { socket, setPlayersList, setClassroomName, setOwners, isOwner } = usePartyContext();
+  const { socket, setPlayersList, setClassroomName, setOwners, isOwner ,setAverageVotes, setAmountOfVotes} = usePartyContext();
 
   useEffect(() => {
     socket.on("join-classroom", function (data) {
-      console.log(data);
+      setOwners(data.classroom.owners)
       setPlayersList(data.players);
       setClassroomName(data.classroom.name);
     });
@@ -22,21 +22,22 @@ const Index = () => {
       }
     );
 
-    socket.on(
+/*     socket.on(
       "add-admin", 
       function ({ players, classroom }: { classroom: Classroom, players: Player[] }) {
       setPlayersList(players)
       setOwners(classroom.owners)
-  })
+  }) */
 
   socket.on("player-disconnected", function ({ players, classroom }: { classroom: Classroom, players: Player[] }) {
     setOwners(classroom.owners)
     setPlayersList(players)
 })
 
-  /* return () => {
-    socket.disconnect();
-  }; */
+  socket.on("reveal-cards", function ({ average, amountOfVotes }: { average: string, amountOfVotes: { label: string; times: number }[] }) {
+    setAverageVotes(average)
+    setAmountOfVotes(amountOfVotes)
+  })
 
   }, []);
 

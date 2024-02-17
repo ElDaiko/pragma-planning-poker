@@ -8,15 +8,28 @@ import React, { useEffect, useState } from "react";
 
 const TableDisplay = () => {
   const { rolConText } = useUserContext();
-  const { classroomName, socket } = usePartyContext();
+  const { classroomName, socket, isOwner, playersList, amountOfVotes, averageVotes } = usePartyContext();
   const cardNumbers = typesOfScores["fibonacci"];
   const [card, setCard] = useState<string | null>(null);
+
+  console.log(isOwner);
+  
+  function handleRevealCards() {
+        socket.emit("reveal-cards")
+    }
 
   useEffect(() => {
     if (card != null) {
       socket.emit("vote", { card: card });
     }
   }, [card]);
+
+  console.log(amountOfVotes);
+  console.log(averageVotes);
+
+  console.log(isOwner);
+  
+  
 
   return (
     <div className={`${styles["container"]}`}>
@@ -35,7 +48,9 @@ const TableDisplay = () => {
       <main>
         <div className={styles["container__desk"]}></div>
         <div className={styles["container__desk2"]}></div>
-        <div className={styles["container__desk3"]}></div>
+        <div className={styles["container__desk3"]}>
+          {isOwner?<button onClick={handleRevealCards} className={styles["container__button-reveal"]}>Revelar Cartas</button>:<></>}
+        </div>
         <Usercard></Usercard>
       </main>
 
