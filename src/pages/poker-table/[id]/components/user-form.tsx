@@ -8,7 +8,6 @@ import usePartyNameValidation from "@/hooks/usePartyNameValidation";
 import { usePartyContext } from "@/hooks/usePartyContext";
 
 const UserForm = () => {
-  const [socketID, setSocketID] = useState("");
   const [blur, setBlur] = useState(false);
   const [username, setUsername] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
@@ -16,9 +15,6 @@ const UserForm = () => {
   const { socket, playersList } = usePartyContext();
   const router = useRouter();
 
-
-  console.log(socket.id);
-  
 
   const obtenerIdUsuarioActual = () => {
     if (playersList.length > 0) {
@@ -30,9 +26,6 @@ const UserForm = () => {
     }
   };
 
-  useEffect(() => {
-    obtenerIdUsuarioActual();
-  }, [socket.id/* , playersList */])
 
   function giveAdmin(idUsuario:any) {
     console.log(idUsuario);
@@ -115,11 +108,6 @@ const UserForm = () => {
       ) : (
         <></>
       )}
-      {/* <div className={styles["map-message__position"]}>
-        {validate.map((message, index) => (
-          <p key={index}>{message}</p>
-        ))}
-      </div> */}
     </div>
   );
 };

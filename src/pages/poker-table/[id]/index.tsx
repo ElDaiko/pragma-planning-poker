@@ -23,10 +23,21 @@ const Index = () => {
       }
     );
 
-    socket.on("add-admin", function ({ players, classroom }: { classroom: Classroom, players: Player[] }) {
+    socket.on(
+      "add-admin", 
+      function ({ players, classroom }: { classroom: Classroom, players: Player[] }) {
       setPlayersList(players)
       setOwners(classroom.owners)
   })
+
+  socket.on("player-disconnected", function ({ players, classroom }: { classroom: Classroom, players: Player[] }) {
+    setOwners(classroom.owners)
+    setPlayersList(players)
+})
+
+  return () => {
+    socket.disconnect();
+  };
 
   }, []);
 
