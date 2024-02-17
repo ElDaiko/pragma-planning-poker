@@ -8,13 +8,37 @@ import usePartyNameValidation from "@/hooks/usePartyNameValidation";
 import { usePartyContext } from "@/hooks/usePartyContext";
 
 const UserForm = () => {
+  const [socketID, setSocketID] = useState("");
   const [blur, setBlur] = useState(false);
   const [username, setUsername] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
-  const { setUsernameContext, setRolConText, setPartyContext } = useUserContext();
-  const { socket } = usePartyContext();
+  const { setUsernameContext, setRolConText, setPartyContext, userNameContext } = useUserContext();
+  const { socket, playersList } = usePartyContext();
   const router = useRouter();
 
+
+  console.log(socket.id);
+  
+
+  const obtenerIdUsuarioActual = () => {
+    if (playersList.length > 0) {
+      const usuarioActual = playersList.find(player => player.socketID === socket.id);
+      if (usuarioActual) {
+        const idUsuarioActual = usuarioActual._id;
+        giveAdmin(idUsuarioActual);
+      }
+    }
+  };
+
+  useEffect(() => {
+    obtenerIdUsuarioActual();
+  }, [socket.id/* , playersList */])
+
+  function giveAdmin(idUsuario:any) {
+    console.log(idUsuario);
+    socket.emit("add-admin",  idUsuario )
+    /* setConfirmationModal(false) */
+}
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(event.target.value);
@@ -23,6 +47,7 @@ const UserForm = () => {
   if (selectedOption === "") {
     setSelectedOption("jugador");
   }
+  
 
   const handleCreateParty = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -75,10 +100,12 @@ const UserForm = () => {
                   value="spectador"
                 />
               </div>
+              
               <ButtonAtom
                 className={`${styles["modal-button"]} ${
                   validate.length ? styles["modal-button__disabled"] : ""
                 }`}
+                onClick={() => obtenerIdUsuarioActual()}
               >
                 Crear Partida
               </ButtonAtom>

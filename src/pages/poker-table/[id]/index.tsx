@@ -3,9 +3,10 @@ import TableDisplay from "@/pages/poker-table/[id]/components/table-display";
 import { useEffect } from "react";
 import { usePartyContext } from "@/hooks/usePartyContext";
 import { Player } from "@/types/player";
+import { Classroom } from "@/types/classroom";
 
 const Index = () => {
-  const { socket, setPlayersList, setClassroomName, classroomName } =
+  const { socket, setPlayersList, setClassroomName, setOwners } =
     usePartyContext();
 
   useEffect(() => {
@@ -21,6 +22,12 @@ const Index = () => {
         setPlayersList(players);
       }
     );
+
+    socket.on("add-admin", function ({ players, classroom }: { classroom: Classroom, players: Player[] }) {
+      setPlayersList(players)
+      setOwners(classroom.owners)
+  })
+
   }, []);
 
   return (

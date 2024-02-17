@@ -14,7 +14,6 @@ const socket = io("http://localhost:8080", {
 
 export function PartyProvider({ children }: { children: JSX.Element | ReactElement | ReactElement[] }) {
     const [playersList, setPlayersList] = useState<Player[]>([])
-
     const [classroomName, setClassroomName] = useState<string | null>(null)
     const [owners, setOwners] = useState<string[]>([])
     const [globalTypeOfScores, setGlobalTypeOfScores] = useState<string>("fibonacci")
