@@ -6,8 +6,7 @@ import { Player } from "@/types/player";
 import { Classroom } from "@/types/classroom";
 
 const Index = () => {
-  const { socket, setPlayersList, setClassroomName, setOwners } =
-    usePartyContext();
+  const { socket, setPlayersList, setClassroomName, setOwners, isOwner } = usePartyContext();
 
   useEffect(() => {
     socket.on("join-classroom", function (data) {
@@ -35,9 +34,9 @@ const Index = () => {
     setPlayersList(players)
 })
 
-  return () => {
+  /* return () => {
     socket.disconnect();
-  };
+  }; */
 
   }, []);
 
