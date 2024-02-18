@@ -16,7 +16,7 @@ const TableDisplay = () => {
     amountOfVotes,
     averageVotes,
     revealCards,
-    setRevealCards
+    setRevealCards,
   } = usePartyContext();
   const cardNumbers = typesOfScores["fibonacci"];
   const [card, setCard] = useState<string | null>(null);
@@ -69,41 +69,44 @@ const TableDisplay = () => {
         </div>
         <Usercard></Usercard>
       </main>
-
-      {rolConText === "player" ? (
-        <>
-          {revealCards ? (
-            <footer>
-              {amountOfVotes?.map((number, index) => (
-                <div key={index}>
-                  <button className={styles["container__cards"]}>{number.label}</button>
-                  <div>{number.times} votos</div>
-                </div>
-              ))}
-              <div>Promedio {averageVotes}</div>
-            </footer>
-          ) : (
-            <>
-              <div className={styles["container__cards-title"]}>
-                <h2>Elige una carta 👇</h2>
+      <>
+        {revealCards ? (
+          <footer>
+            {amountOfVotes?.map((number, index) => (
+              <div key={index}>
+                <button className={styles["container__cards"]}>
+                  {number.label}
+                </button>
+                <div>{number.times} votos</div>
               </div>
-              <footer>
-                {cardNumbers?.map((number, index) => (
-                  <button
-                    onClick={() => setCard(number)}
-                    key={index}
-                    className={styles["container__cards"]}
-                  >
-                    {number}
-                  </button>
-                ))}
-              </footer>
-            </>
-          )}
-        </>
-      ) : (
-        <></>
-      )}
+            ))}
+            <div>Promedio {averageVotes}</div>
+          </footer>
+        ) : (
+          <>
+            {rolConText === "player" ? (
+              <>
+                <div className={styles["container__cards-title"]}>
+                  <h2>Elige una carta 👇</h2>
+                </div>
+                <footer>
+                  {cardNumbers?.map((number, index) => (
+                    <button
+                      onClick={() => setCard(number)}
+                      key={index}
+                      className={styles["container__cards"]}
+                    >
+                      {number}
+                    </button>
+                  ))}
+                </footer>
+              </>
+            ) : (
+              <></>
+            )}
+          </>
+        )}
+      </>
     </div>
   );
 };
