@@ -127,8 +127,7 @@
     flex-direction: row;
   }
 
-  &__cards {
-    cursor: pointer;
+  @mixin __cards {
     color: white;
     margin: 10px;
     display: flex;
@@ -140,15 +139,29 @@
     background-color: #1f1138;
     box-shadow: 0 0 50px 0 #44198a, inset 0 0 10px 0 #44198a;
     border-radius: 10px;
-    transition: background-color 0.5s, transform 0.5s;
     font-size: 16px;
     font-weight: bolder;
+}
 
-    &:hover {
-      border: none;
-      background-color: #e4a4ff;
-      color: #330072;
-      transform: translateY(-8px);
+&__cards {
+    @include __cards;
+
+    &-average {
+        @include __cards;
+        text-align: center
+    }
+
+    &-vote {
+        @include __cards;
+        transition: background-color 0.5s, transform 0.5s;
+
+        &:hover {
+          cursor: pointer;
+          border: none;
+          background-color: #e4a4ff;
+          color: #330072;
+          transform: translateY(-8px);
+        }
     }
 
     &-title {

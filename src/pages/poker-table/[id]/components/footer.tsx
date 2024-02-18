@@ -43,7 +43,7 @@ export default function Footer() {
                   <button
                     onClick={() => setCard(number)}
                     key={index}
-                    className={styles["container__cards"]}
+                    className={styles["container__cards-vote"]}
                   >
                     {number}
                   </button>
