@@ -19,12 +19,13 @@ export function PartyProvider({ children }: { children: JSX.Element | ReactEleme
     const[amountOfVotes, setAmountOfVotes] = useState<AmountOfVotes[]>([])
     const [classroomName, setClassroomName] = useState<string | null>(null)
     const [owners, setOwners] = useState<string[]>([])
+    const [revealCards, setRevealCards] = useState(false);
     const [globalTypeOfScores, setGlobalTypeOfScores] = useState<string>("fibonacci")
     const isOwner = owners.includes(socket.id??'') //cuando es undefined utiliza el ""
     
 
   return (
-    <PartyContext.Provider value={{playersList, setPlayersList, socket, classroomName, setClassroomName, isOwner, setOwners, globalTypeOfScores, setGlobalTypeOfScores, setAverageVotes, averageVotes, amountOfVotes, setAmountOfVotes}}>
+    <PartyContext.Provider value={{playersList, setPlayersList, socket, classroomName, setClassroomName, isOwner, setOwners, globalTypeOfScores, setGlobalTypeOfScores, setAverageVotes, averageVotes, amountOfVotes, setAmountOfVotes, revealCards, setRevealCards}}>
         {children}
     </PartyContext.Provider>
   );

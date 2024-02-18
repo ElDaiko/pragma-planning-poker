@@ -8,15 +8,24 @@ import React, { useEffect, useState } from "react";
 
 const TableDisplay = () => {
   const { rolConText } = useUserContext();
-  const { classroomName, socket, isOwner, playersList, amountOfVotes, averageVotes } = usePartyContext();
+  const {
+    classroomName,
+    socket,
+    isOwner,
+    playersList,
+    amountOfVotes,
+    averageVotes,
+    revealCards,
+    setRevealCards
+  } = usePartyContext();
   const cardNumbers = typesOfScores["fibonacci"];
   const [card, setCard] = useState<string | null>(null);
 
   console.log(isOwner);
-  
+
   function handleRevealCards() {
-        socket.emit("reveal-cards")
-    }
+    socket.emit("reveal-cards");
+  }
 
   useEffect(() => {
     if (card != null) {
@@ -28,8 +37,6 @@ const TableDisplay = () => {
   console.log(averageVotes);
 
   console.log(isOwner);
-  
-  
 
   return (
     <div className={`${styles["container"]}`}>
@@ -49,27 +56,50 @@ const TableDisplay = () => {
         <div className={styles["container__desk"]}></div>
         <div className={styles["container__desk2"]}></div>
         <div className={styles["container__desk3"]}>
-          {isOwner?<button onClick={handleRevealCards} className={styles["container__button-reveal"]}>Revelar Cartas</button>:<></>}
+          {isOwner ? (
+            <button
+              onClick={handleRevealCards}
+              className={styles["container__button-reveal"]}
+            >
+              Revelar Cartas
+            </button>
+          ) : (
+            <></>
+          )}
         </div>
         <Usercard></Usercard>
       </main>
 
       {rolConText === "player" ? (
         <>
-          <div className={styles["container__cards-title"]}>
-            <h2>Elige una carta 👇</h2>
-          </div>
-          <footer>
-            {cardNumbers?.map((number, index) => (
-              <button
-                onClick={() => setCard(number)}
-                key={index}
-                className={styles["container__cards"]}
-              >
-                {number}
-              </button>
-            ))}
-          </footer>
+          {revealCards ? (
+            <footer>
+              {amountOfVotes?.map((number, index) => (
+                <div key={index}>
+                  <button className={styles["container__cards"]}>{number.label}</button>
+                  <div>{number.times} votos</div>
+                </div>
+              ))}
+              <div>Promedio {averageVotes}</div>
+            </footer>
+          ) : (
+            <>
+              <div className={styles["container__cards-title"]}>
+                <h2>Elige una carta 👇</h2>
+              </div>
+              <footer>
+                {cardNumbers?.map((number, index) => (
+                  <button
+                    onClick={() => setCard(number)}
+                    key={index}
+                    className={styles["container__cards"]}
+                  >
+                    {number}
+                  </button>
+                ))}
+              </footer>
+            </>
+          )}
         </>
       ) : (
         <></>

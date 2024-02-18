@@ -14,4 +14,6 @@ export interface PartyContext {
     setAverageVotes: SetState<string | null>
     amountOfVotes: AmountOfVotes[] | null
     setAmountOfVotes: SetState<AmountOfVotes[] | null>
+    revealCards: boolean
+    setRevealCards: SetState<boolean>
 }
