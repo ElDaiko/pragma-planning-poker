@@ -10,18 +10,10 @@ const TableDisplay = () => {
     socket,
     isOwner,
   } = usePartyContext();
-  
-
-  console.log(isOwner);
 
   function handleRevealCards() {
     socket.emit("reveal-cards");
   }
-
-  /* console.log(amountOfVotes);
-  console.log(averageVotes);
-
-  console.log(isOwner); */
 
   return (
     <div className={`${styles["container"]}`}>

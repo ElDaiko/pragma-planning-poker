@@ -4,10 +4,10 @@ import { usePartyContext } from "@/hooks/usePartyContext";
 import { typesOfScores } from "@/utils/score-type";
 import { useUserContext } from "@/hooks/useUserContext";
 
-
 export default function Footer() {
   const { rolConText } = useUserContext();
-  const { amountOfVotes, averageVotes, revealCards , socket} = usePartyContext();
+  const { amountOfVotes, averageVotes, revealCards, socket } =
+    usePartyContext();
   const cardNumbers = typesOfScores["fibonacci"];
   const [card, setCard] = useState<string | null>(null);
 
@@ -20,17 +20,19 @@ export default function Footer() {
   return (
     <>
       {revealCards ? (
-        <footer>
-          {amountOfVotes?.map((number, index) => (
-            <div key={index}>
-              <button className={styles["container__cards"]}>
-                {number.label}
-              </button>
-              <div>{number.times} votos</div>
-            </div>
-          ))}
-          <div>Promedio {averageVotes}</div>
-        </footer>
+        <>
+          <footer>
+            {amountOfVotes?.map((number, index) => (
+              <div key={index}>
+                <button className={styles["container__cards"]}>
+                  {number.label}
+                </button>
+                <div>{number.times} votos</div>
+              </div>
+            ))}
+          </footer>
+          <div className={styles["container__cards-average"]}>Promedio:<h1>{averageVotes}</h1></div>
+        </>
       ) : (
         <>
           {rolConText === "player" ? (

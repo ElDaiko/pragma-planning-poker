@@ -125,6 +125,7 @@
     flex-wrap: nowrap;
     align-content: space-between;
     flex-direction: row;
+    text-align: center;
   }
 
   @mixin __cards {
@@ -146,11 +147,6 @@
 &__cards {
     @include __cards;
 
-    &-average {
-        @include __cards;
-        text-align: center
-    }
-
     &-vote {
         @include __cards;
         transition: background-color 0.5s, transform 0.5s;
@@ -167,6 +163,15 @@
     &-title {
       grid-area: card-title;
       text-align: center;
+    }
+
+    &-average {
+      grid-column: 3;
+      grid-row: 4;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
     }
   }
 }
