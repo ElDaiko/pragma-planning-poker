@@ -27,7 +27,7 @@ export default function Footer() {
                 <button className={styles["container__cards"]}>
                   {number.label}
                 </button>
-                <div>{number.times} votos</div>
+                <div>{number.times  > 1 ? <p>{number.times} votos</p> : <p>{number.times} voto</p>}</div>
               </div>
             ))}
           </footer>
