@@ -6,8 +6,7 @@ import { useUserContext } from "@/hooks/useUserContext";
 
 export default function Footer() {
   const { rolConText } = useUserContext();
-  const { amountOfVotes, averageVotes, revealCards, socket } =
-    usePartyContext();
+  const { amountOfVotes, averageVotes, revealCards, socket, playersList } = usePartyContext();
   const cardNumbers = typesOfScores["fibonacci"];
   const [card, setCard] = useState<string | null>(null);
 
