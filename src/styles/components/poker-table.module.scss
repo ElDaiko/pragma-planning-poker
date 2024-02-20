@@ -152,6 +152,7 @@
         background-color: #e4a4ff;
         transform: translateY(-8px);
         border: none;
+        color: #330072;
       }
         @include __cards;
         transition: background-color 0.5s, transform 0.5s;
