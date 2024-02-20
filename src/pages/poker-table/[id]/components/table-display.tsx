@@ -3,12 +3,15 @@ import styles from "../../../../styles/components/poker-table.module.scss";
 import Usercard from "@/system-design/atoms/user-card";
 import { usePartyContext } from "@/hooks/usePartyContext";
 import Footer from "./footer";
+import InvitationModal from "./invitation-modal";
 
 const TableDisplay = () => {
   const { classroomName, socket, isOwner, allNonSpectatorVoted } =
     usePartyContext();
 
   const [reset, setReset] = useState(false);
+  /* const currentUrl = window.location.href; */
+  
 
   function handleRevealCards() {
     socket.emit("reveal-cards");

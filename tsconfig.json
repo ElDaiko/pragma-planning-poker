@@ -16,7 +16,7 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/poker-creation/index.tsx", "src/pages/testPage/index.jsx", "src/pages/poker-table/[id]/components/table-display.jsx", "src/pages/poker-table/[id]/components/footer.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/poker-creation/index.tsx", "src/pages/testPage/index.jsx", "src/pages/poker-table/[id]/components/table-display.jsx", "src/pages/poker-table/[id]/components/footer.jsx", "src/pages/poker-table/[id]/components/invitation-modal.jsx"],
   "exclude": ["node_modules"]
 }
 
