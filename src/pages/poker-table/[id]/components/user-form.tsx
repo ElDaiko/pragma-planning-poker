@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useState, useEffect, FormEvent } from "react";
-import styles from "../styles/components/user-form.module.scss";
+import styles from "../../../../styles/components/user-form.module.scss";
 import InputAtom from "@/system-design/atoms/input";
 import ButtonAtom from "@/system-design/atoms/button";
 import { useUserContext } from "@/hooks/useUserContext";
@@ -8,13 +8,13 @@ import usePartyNameValidation from "@/hooks/usePartyNameValidation";
 import { usePartyContext } from "@/hooks/usePartyContext";
 
 const UserForm = () => {
+  const [socketID, setSocketID] = useState("");
   const [blur, setBlur] = useState(false);
   const [username, setUsername] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
-  const { setUsernameContext, setRolConText, setPartyContext } = useUserContext();
-  const { socket } = usePartyContext();
+  const { setUsernameContext, setRolConText, setPartyContext, userNameContext } = useUserContext();
+  const { socket, playersList, isOwner } = usePartyContext();
   const router = useRouter();
-
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(event.target.value);
@@ -23,6 +23,7 @@ const UserForm = () => {
   if (selectedOption === "") {
     setSelectedOption("jugador");
   }
+  
 
   const handleCreateParty = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -75,6 +76,7 @@ const UserForm = () => {
                   value="spectador"
                 />
               </div>
+              
               <ButtonAtom
                 className={`${styles["modal-button"]} ${
                   validate.length ? styles["modal-button__disabled"] : ""
@@ -98,3 +100,5 @@ const UserForm = () => {
 };
 
 export default UserForm;
+
+
