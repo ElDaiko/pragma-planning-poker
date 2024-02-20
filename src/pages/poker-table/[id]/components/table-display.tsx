@@ -10,63 +10,68 @@ const TableDisplay = () => {
     usePartyContext();
 
   const [reset, setReset] = useState(false);
-  /* const currentUrl = window.location.href; */
-  
+  const [blur, setBlur] = useState(false);
 
   function handleRevealCards() {
     socket.emit("reveal-cards");
   }
 
   function handleResetMatch() {
-    socket.emit("reset-classroom")
-}
+    socket.emit("reset-classroom");
+  }
 
   return (
-    <div className={`${styles["container"]}`}>
-      <header>
-        <img
-          className={`${styles["container__logo"]}`}
-          src="/images/ficha-de-poker.png"
-        />
-        <h1 className={`${styles["container__title"]}`}>{classroomName}</h1>
-        <div className={`${styles["container__user"]}`}>
-          <button className={`${styles["container__user-invite"]}`}>
-            Invitar
-          </button>
-        </div>
-      </header>
-      <main>
-        <div className={styles["container__desk"]}></div>
-        <div className={styles["container__desk2"]}></div>
-        <div className={styles["container__desk3"]}>
-          {isOwner && allNonSpectatorVoted && !reset ? (
+    <>
+    {blur ? <InvitationModal /> : <></>}
+      <div className={`${styles["container"]}`}>
+        <header>
+          <img
+            className={`${styles["container__logo"]}`}
+            src="/images/ficha-de-poker.png"
+          />
+          <h1 className={`${styles["container__title"]}`}>{classroomName}</h1>
+          <div className={`${styles["container__user"]}`}>
             <button
-              onClick={() => {
-                handleRevealCards();
-                setReset(true);
-              }}
-              className={styles["container__button-reveal"]}
+              onClick={() => setBlur(true)}
+              className={`${styles["container__user-invite"]}`}
             >
-              Revelar Cartas
+              Invitar
             </button>
-          ) : reset ? (
-            <button
-            onClick={() => {
-              handleResetMatch();
-              setReset(false);
-            }}
-              className={styles["container__button-reveal"]}
-            >
-              Nueva votación
-            </button>
-          ) : (
-            <></>
-          )}
-        </div>
-        <Usercard></Usercard>
-      </main>
-      <Footer></Footer>
-    </div>
+          </div>
+        </header>
+        <main>
+          <div className={styles["container__desk"]}></div>
+          <div className={styles["container__desk2"]}></div>
+          <div className={styles["container__desk3"]}>
+            {isOwner && allNonSpectatorVoted && !reset ? (
+              <button
+                onClick={() => {
+                  handleRevealCards();
+                  setReset(true);
+                }}
+                className={styles["container__button-reveal"]}
+              >
+                Revelar Cartas
+              </button>
+            ) : reset ? (
+              <button
+                onClick={() => {
+                  handleResetMatch();
+                  setReset(false);
+                }}
+                className={styles["container__button-reveal"]}
+              >
+                Nueva votación
+              </button>
+            ) : (
+              <></>
+            )}
+          </div>
+          <Usercard></Usercard>
+        </main>
+        <Footer></Footer>
+      </div>
+    </>
   );
 };
 
