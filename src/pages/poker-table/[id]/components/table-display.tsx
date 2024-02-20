@@ -5,20 +5,18 @@ import { usePartyContext } from "@/hooks/usePartyContext";
 import Footer from "./footer";
 
 const TableDisplay = () => {
-  const {
-    classroomName,
-    socket,
-    isOwner,
-    playersList,
-    allNonSpectatorVoted
-  } = usePartyContext();
+  const { classroomName, socket, isOwner, allNonSpectatorVoted } =
+    usePartyContext();
 
-  
+  const [reset, setReset] = useState(false);
 
   function handleRevealCards() {
     socket.emit("reveal-cards");
   }
-  
+
+  function handleResetMatch() {
+    socket.emit("reset-classroom")
+}
 
   return (
     <div className={`${styles["container"]}`}>
@@ -38,12 +36,25 @@ const TableDisplay = () => {
         <div className={styles["container__desk"]}></div>
         <div className={styles["container__desk2"]}></div>
         <div className={styles["container__desk3"]}>
-          {(isOwner && allNonSpectatorVoted)? (
+          {isOwner && allNonSpectatorVoted && !reset ? (
             <button
-              onClick={handleRevealCards}
+              onClick={() => {
+                handleRevealCards();
+                setReset(true);
+              }}
               className={styles["container__button-reveal"]}
             >
               Revelar Cartas
+            </button>
+          ) : reset ? (
+            <button
+            onClick={() => {
+              handleResetMatch();
+              setReset(false);
+            }}
+              className={styles["container__button-reveal"]}
+            >
+              Nueva votación
             </button>
           ) : (
             <></>

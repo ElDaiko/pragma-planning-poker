@@ -17,4 +17,6 @@ export interface PartyContext {
     revealCards: boolean
     setRevealCards: SetState<boolean>
     allNonSpectatorVoted: boolean
+    contextCard: string | null
+    setContextCard: SetState<string | null>
 }

@@ -11,21 +11,21 @@ export default function Footer() {
     averageVotes,
     revealCards,
     socket,
-    playersList,
     allNonSpectatorVoted,
+    contextCard, setContextCard
   } = usePartyContext();
   const cardNumbers = typesOfScores["fibonacci"];
-  const [card, setCard] = useState<string | null>(null);
 
   useEffect(() => {
-    if (card != null) {
-      socket.emit("vote", { card: card });
+    if (contextCard != null) {
+      socket.emit("vote", { card: contextCard });
     }
-  }, [card]);
+  }, [contextCard]);
+
 
   return (
     <>
-      {(revealCards && allNonSpectatorVoted) ? (
+      {(revealCards && allNonSpectatorVoted && amountOfVotes) ? (
         <>
           <footer>
             {amountOfVotes?.map((number, index) => (
@@ -57,9 +57,9 @@ export default function Footer() {
               <footer>
                 {cardNumbers?.map((number, index) => (
                   <button
-                    onClick={() => setCard(number)}
+                    onClick={() => setContextCard(number)}
                     key={index}
-                    className={`${styles["container__cards-vote"]} ${card == number && styles["container__cards-vote--voted"]}`}
+                    className={`${styles["container__cards-vote"]} ${contextCard == number && styles["container__cards-vote--voted"]}`}
                   >
                     {number}
                   </button>
