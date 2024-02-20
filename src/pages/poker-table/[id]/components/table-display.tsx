@@ -5,7 +5,7 @@ import { usePartyContext } from "@/hooks/usePartyContext";
 import Footer from "./footer";
 
 const TableDisplay = () => {
-  const { classroomName, socket, isOwner, allNonSpectatorVoted, setContextCard } =
+  const { classroomName, socket, isOwner, allNonSpectatorVoted } =
     usePartyContext();
 
   const [reset, setReset] = useState(false);
@@ -50,7 +50,6 @@ const TableDisplay = () => {
             <button
             onClick={() => {
               handleResetMatch();
-              setContextCard(null)
               setReset(false);
             }}
               className={styles["container__button-reveal"]}

@@ -44,6 +44,7 @@ const Index = () => {
     setAverageVotes(null)
     setAmountOfVotes(null)
     setPlayersList(players)
+    setContextCard(null)
 })
 
   }, []);
