@@ -19,9 +19,10 @@ export function PartyProvider({ children }: { children: JSX.Element | ReactEleme
     const[amountOfVotes, setAmountOfVotes] = useState<AmountOfVotes[]>([])
     const [classroomName, setClassroomName] = useState<string | null>(null)
     const [owners, setOwners] = useState<string[]>([])
+    const [contextCard, setContextCard] = useState<string | null>(null);
     const [revealCards, setRevealCards] = useState(false);
     const [globalTypeOfScores, setGlobalTypeOfScores] = useState<string>("fibonacci")
-    const isOwner = owners.includes(socket.id??'') //cuando es undefined utiliza el ""
+    const isOwner = owners.includes(socket.id??'')
     const nonSpectatorUsers = playersList.filter(user => user.type !== "spectador");
     const voted = playersList.filter(user => user.vote && Number(user.vote) >= 0);
     const allNonSpectatorVoted = nonSpectatorUsers.length > 0 && nonSpectatorUsers.length == voted?.length;
@@ -29,7 +30,11 @@ export function PartyProvider({ children }: { children: JSX.Element | ReactEleme
 
   return (
     
-    <PartyContext.Provider value={{playersList, setPlayersList, socket, classroomName, setClassroomName, isOwner, setOwners, globalTypeOfScores, setGlobalTypeOfScores, setAverageVotes, averageVotes, amountOfVotes, setAmountOfVotes, revealCards, setRevealCards, allNonSpectatorVoted}}>
+    <PartyContext.Provider value={{
+      playersList, setPlayersList, socket, classroomName, setClassroomName, isOwner,
+       setOwners, globalTypeOfScores, setGlobalTypeOfScores, setAverageVotes, averageVotes,
+        amountOfVotes, setAmountOfVotes, revealCards, setRevealCards, allNonSpectatorVoted,
+        contextCard, setContextCard}}>
         {children}
     </PartyContext.Provider>
   );
