@@ -11,7 +11,6 @@ export default function Footer() {
     averageVotes,
     revealCards,
     socket,
-    playersList,
     allNonSpectatorVoted,
   } = usePartyContext();
   const cardNumbers = typesOfScores["fibonacci"];
@@ -25,7 +24,7 @@ export default function Footer() {
 
   return (
     <>
-      {(revealCards && allNonSpectatorVoted) ? (
+      {(revealCards && allNonSpectatorVoted && amountOfVotes) ? (
         <>
           <footer>
             {amountOfVotes?.map((number, index) => (

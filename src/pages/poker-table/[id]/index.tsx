@@ -40,6 +40,12 @@ const Index = () => {
     setRevealCards(true);
   })
 
+  socket.on("reset-classroom", function ({ players }: { players: Player[] }) {
+    setAverageVotes(null)
+    setAmountOfVotes(null)
+    setPlayersList(players)
+})
+
   }, []);
 
   return (
