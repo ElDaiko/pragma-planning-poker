@@ -4,6 +4,6 @@ export interface Player{
     _id: string
     vote?: string
     username: string
-    type: "player" | "viewer"
+    type: "player" | "spectador"
     roomID: string
 }

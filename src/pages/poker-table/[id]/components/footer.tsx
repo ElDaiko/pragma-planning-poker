@@ -6,7 +6,14 @@ import { useUserContext } from "@/hooks/useUserContext";
 
 export default function Footer() {
   const { rolConText } = useUserContext();
-  const { amountOfVotes, averageVotes, revealCards, socket, playersList } = usePartyContext();
+  const {
+    amountOfVotes,
+    averageVotes,
+    revealCards,
+    socket,
+    playersList,
+    allNonSpectatorVoted,
+  } = usePartyContext();
   const cardNumbers = typesOfScores["fibonacci"];
   const [card, setCard] = useState<string | null>(null);
 
@@ -18,7 +25,7 @@ export default function Footer() {
 
   return (
     <>
-      {revealCards ? (
+      {(revealCards && allNonSpectatorVoted) ? (
         <>
           <footer>
             {amountOfVotes?.map((number, index) => (
@@ -26,15 +33,23 @@ export default function Footer() {
                 <button className={styles["container__cards"]}>
                   {number.label}
                 </button>
-                <div>{number.times  > 1 ? <p>{number.times} votos</p> : <p>{number.times} voto</p>}</div>
+                <div>
+                  {number.times > 1 ? (
+                    <p>{number.times} votos</p>
+                  ) : (
+                    <p>{number.times} voto</p>
+                  )}
+                </div>
               </div>
             ))}
           </footer>
-          <div className={styles["container__cards-average"]}>Promedio:<h1>{averageVotes}</h1></div>
+          <div className={styles["container__cards-average"]}>
+            Promedio:<h1>{averageVotes}</h1>
+          </div>
         </>
       ) : (
         <>
-          {rolConText === "player" ? (
+          {rolConText === "player" && (
             <>
               <div className={styles["container__cards-title"]}>
                 <h2>Elige una carta 👇</h2>
@@ -44,15 +59,13 @@ export default function Footer() {
                   <button
                     onClick={() => setCard(number)}
                     key={index}
-                    className={styles["container__cards-vote"]}
+                    className={`${styles["container__cards-vote"]} ${card == number && styles["container__cards-vote--voted"]}`}
                   >
                     {number}
                   </button>
                 ))}
               </footer>
             </>
-          ) : (
-            <></>
           )}
         </>
       )}

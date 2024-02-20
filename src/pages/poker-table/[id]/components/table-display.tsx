@@ -5,13 +5,12 @@ import { usePartyContext } from "@/hooks/usePartyContext";
 import Footer from "./footer";
 
 const TableDisplay = () => {
-  const[allVote, setAllVote] = useState(Boolean)
   const {
     classroomName,
     socket,
     isOwner,
     playersList,
-    amountOfVotes,
+    allNonSpectatorVoted
   } = usePartyContext();
 
   
@@ -19,16 +18,6 @@ const TableDisplay = () => {
   function handleRevealCards() {
     socket.emit("reveal-cards");
   }
-
-  useEffect(() => {
-    const nonSpectatorUsers = playersList.filter(user => user.type !== "spectador");
-    const voted = playersList.filter(user => user.vote >= 0);
-    const allNonSpectatorVoted = nonSpectatorUsers.length > 0 && nonSpectatorUsers.length == voted?.length;
-    
-    setAllVote(allNonSpectatorVoted);
-  }, [playersList]);
-  
-  
   
 
   return (
@@ -49,7 +38,7 @@ const TableDisplay = () => {
         <div className={styles["container__desk"]}></div>
         <div className={styles["container__desk2"]}></div>
         <div className={styles["container__desk3"]}>
-          {(isOwner && allVote)? (
+          {(isOwner && allNonSpectatorVoted)? (
             <button
               onClick={handleRevealCards}
               className={styles["container__button-reveal"]}
