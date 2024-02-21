@@ -6,7 +6,7 @@ import { Player } from "@/types/player";
 import { Classroom } from "@/types/classroom";
 
 const Index = () => {
-  const { socket, setPlayersList, setClassroomName, setOwners, isOwner ,setAverageVotes, setAmountOfVotes, revealCards, setRevealCards, contextCard, setContextCard} = usePartyContext();
+  const { socket, setPlayersList, setClassroomName, setOwners ,setAverageVotes, setAmountOfVotes, setRevealCards, setContextCard} = usePartyContext();
 
   useEffect(() => {
     socket.on("join-classroom", function (data) {

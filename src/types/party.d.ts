@@ -19,4 +19,6 @@ export interface PartyContext {
     allNonSpectatorVoted: boolean
     contextCard: string | null
     setContextCard: SetState<string | null>
+    invitationBlur: boolean
+    setInvitationBlur: setState<boolean>
 }
