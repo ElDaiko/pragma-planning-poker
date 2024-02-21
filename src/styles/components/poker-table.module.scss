@@ -26,7 +26,7 @@
     justify-self: center;
   }
 
-  &__button-reveal{
+  &__button-reveal {
     font-size: 15px;
     font-weight: bolder;
     border: none;
@@ -50,6 +50,30 @@
       color: rgb(255, 255, 255);
       font-size: 14px;
       font-weight: 700;
+      cursor: pointer;
+    }
+
+    &-button {
+      background: none;
+      border: none;
+    }
+
+    &-display {
+      position: absolute;
+      background-color: #1f0d3f;
+      border: 1px solid #bb6dff;
+      border-radius: 25px;
+      padding: 10px;
+      box-shadow: 0 0 50px 0 #44198a, inset 0 0 10px 0 #44198a;
+      top: 8%;
+
+      &-text{
+        &:hover {
+          cursor: pointer;
+          border: none;
+          color: #e4a4ff;
+        }
+      }
     }
   }
 
@@ -142,28 +166,28 @@
     border-radius: 10px;
     font-size: 16px;
     font-weight: bolder;
-}
+  }
 
-&__cards {
+  &__cards {
     @include __cards;
 
     &-vote {
-      &--voted{
+      &--voted {
         background-color: #e4a4ff;
         transform: translateY(-8px);
         border: none;
         color: #330072;
       }
-        @include __cards;
-        transition: background-color 0.5s, transform 0.5s;
+      @include __cards;
+      transition: background-color 0.5s, transform 0.5s;
 
-        &:hover {
-          cursor: pointer;
-          border: none;
-          background-color: #e4a4ff;
-          color: #330072;
-          transform: translateY(-8px);
-        }
+      &:hover {
+        cursor: pointer;
+        border: none;
+        background-color: #e4a4ff;
+        color: #330072;
+        transform: translateY(-8px);
+      }
     }
 
     &-title {
