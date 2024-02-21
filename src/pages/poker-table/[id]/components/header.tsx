@@ -17,12 +17,16 @@ const Header = () => {
 
   const handleButtonClickModal = () => {
     setHandleModal(!handleModal);
+    setShowOptions(!showOptions);
   };
 
+  const closeModal = () => {
+    setHandleModal(false);
+};
 
   return (
   <>
-  {handleModal && <TypeModal></TypeModal>}
+  {handleModal && <TypeModal onClose={closeModal} />}
   <header>
       <img
         className={`${styles["container__logo"]}`}

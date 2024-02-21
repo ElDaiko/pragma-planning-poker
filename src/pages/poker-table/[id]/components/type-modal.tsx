@@ -3,7 +3,7 @@ import styles from "../../../../styles/components/type-modal.module.scss"
 import { usePartyContext } from '@/hooks/usePartyContext';
 import { useUserContext } from '@/hooks/useUserContext';
 
-const TypeModal = () => {
+const TypeModal = ({ onClose }:any) => {
 
     const { socket } = usePartyContext();
     const {setRolConText} = useUserContext();
@@ -11,6 +11,7 @@ const TypeModal = () => {
     function handleUpdateUser(type: any) {
         socket.emit("update-player", { type });
         setRolConText(type)
+        onClose();
       }
 
     return (
