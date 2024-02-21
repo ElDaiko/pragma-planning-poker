@@ -4,6 +4,7 @@ import Usercard from "@/system-design/atoms/user-card";
 import { usePartyContext } from "@/hooks/usePartyContext";
 import Footer from "./footer";
 import InvitationModal from "./invitation-modal";
+import Header from "./header";
 
 const TableDisplay = () => {
   const { classroomName, socket, isOwner, allNonSpectatorVoted, setInvitationBlur, invitationBlur } =
@@ -22,21 +23,7 @@ const TableDisplay = () => {
     <>
     {invitationBlur ? <InvitationModal /> : <></>}
       <div className={`${styles["container"]}`}>
-        <header>
-          <img
-            className={`${styles["container__logo"]}`}
-            src="/images/ficha-de-poker.png"
-          />
-          <h1 className={`${styles["container__title"]}`}>{classroomName}</h1>
-          <div className={`${styles["container__user"]}`}>
-            <button
-              onClick={() => setInvitationBlur(true)}
-              className={`${styles["container__user-invite"]}`}
-            >
-              Invitar
-            </button>
-          </div>
-        </header>
+        <Header></Header>
         <main>
           <div className={styles["container__desk"]}></div>
           <div className={styles["container__desk2"]}></div>
