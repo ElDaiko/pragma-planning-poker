@@ -47,6 +47,10 @@ const Index = () => {
     setContextCard(null)
 })
 
+socket.on("update-player", function ({ players }: { players: Player[] }) {
+  setPlayersList(players)
+})
+
   }, []);
 
   return (

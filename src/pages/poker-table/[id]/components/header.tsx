@@ -6,29 +6,23 @@ import { useUserContext } from "@/hooks/useUserContext";
 import TypeModal from "./type-modal";
 
 const Header = () => {
-  const { classroomName, setInvitationBlur, socket } = usePartyContext();
-  const { userNameContext, setRolConText } = useUserContext();
-  const [mostrarDesplegable, setMostrarDesplegable] = useState(false);
-
-  function handleUpdateUser(type: any) {
-    socket.emit("update-player", { type });
-    /* setModal(null)
-        setTypeOfPlayer(type) */
-  }
+  const { classroomName, setInvitationBlur } = usePartyContext();
+  const { userNameContext } = useUserContext();
+  const [showOptions, setShowOptions] = useState(false);
+  const [handleModal, setHandleModal] = useState(false)
 
   const handleButtonClick = () => {
-    setMostrarDesplegable(!mostrarDesplegable);
+    setShowOptions(!showOptions);
   };
 
-  const handleOpcionClick = (opcion: string) => {
-    // Aquí puedes manejar la lógica cuando se hace clic en una opción
-    console.log(`Se seleccionó la opción: ${opcion}`);
-    // Puedes agregar más lógica según la opción seleccionada
+  const handleButtonClickModal = () => {
+    setHandleModal(!handleModal);
   };
+
 
   return (
   <>
-  {/* <TypeModal></TypeModal> */}
+  {handleModal && <TypeModal></TypeModal>}
   <header>
       <img
         className={`${styles["container__logo"]}`}
@@ -41,9 +35,9 @@ const Header = () => {
                 <p>{userNameContext.slice(0, 2).toUpperCase()}</p>
             </div>
         </button>
-        {mostrarDesplegable &&
+        {showOptions &&
          <div className={styles["container__user-display"]}>
-            <p className={styles["container__user-display-text"]}>Cambiar visualizacion</p> 
+            <p onClick={() => handleButtonClickModal()} className={styles["container__user-display-text"]}>Cambiar visualizacion</p> 
             <p className={styles["container__user-display-text"]}>Cambiar juego</p>
         </div> }
         <button
