@@ -45,6 +45,7 @@
       display: flex;
       margin-right: 25px;
       justify-content: flex-end;
+      cursor: pointer;
     }
   }
 
@@ -56,8 +57,11 @@
     width: 540px;
     height: 40px;
     background-color: #250f4a;
-    justify-content: center;
     align-items: center;
+
+    &-text {
+      margin-left: 25px;
+    }
   }
 
   &__button {
@@ -66,5 +70,6 @@
     grid-row: 3;
     width: 136px;
     height: 40px;
+    cursor: pointer;
   }
 }

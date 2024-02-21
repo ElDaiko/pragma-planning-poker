@@ -6,11 +6,9 @@ import Footer from "./footer";
 import InvitationModal from "./invitation-modal";
 
 const TableDisplay = () => {
-  const { classroomName, socket, isOwner, allNonSpectatorVoted } =
+  const { classroomName, socket, isOwner, allNonSpectatorVoted, setInvitationBlur, invitationBlur } =
     usePartyContext();
-
   const [reset, setReset] = useState(false);
-  const [blur, setBlur] = useState(false);
 
   function handleRevealCards() {
     socket.emit("reveal-cards");
@@ -22,7 +20,7 @@ const TableDisplay = () => {
 
   return (
     <>
-    {blur ? <InvitationModal /> : <></>}
+    {invitationBlur ? <InvitationModal /> : <></>}
       <div className={`${styles["container"]}`}>
         <header>
           <img
@@ -32,7 +30,7 @@ const TableDisplay = () => {
           <h1 className={`${styles["container__title"]}`}>{classroomName}</h1>
           <div className={`${styles["container__user"]}`}>
             <button
-              onClick={() => setBlur(true)}
+              onClick={() => setInvitationBlur(true)}
               className={`${styles["container__user-invite"]}`}
             >
               Invitar
@@ -45,20 +43,14 @@ const TableDisplay = () => {
           <div className={styles["container__desk3"]}>
             {isOwner && allNonSpectatorVoted && !reset ? (
               <button
-                onClick={() => {
-                  handleRevealCards();
-                  setReset(true);
-                }}
+                onClick={() => {handleRevealCards(); setReset(true)}}
                 className={styles["container__button-reveal"]}
               >
                 Revelar Cartas
               </button>
             ) : reset ? (
               <button
-                onClick={() => {
-                  handleResetMatch();
-                  setReset(false);
-                }}
+                onClick={() => {handleResetMatch(); setReset(false)}}
                 className={styles["container__button-reveal"]}
               >
                 Nueva votación

@@ -18,6 +18,7 @@ export function PartyProvider({ children }: { children: JSX.Element | ReactEleme
     const[averageVotes, setAverageVotes] = useState<string | null>(null)
     const[amountOfVotes, setAmountOfVotes] = useState<AmountOfVotes[]>([])
     const [classroomName, setClassroomName] = useState<string | null>(null)
+    const [invitationBlur, setInvitationBlur] = useState(Boolean)
     const [owners, setOwners] = useState<string[]>([])
     const [contextCard, setContextCard] = useState<string | null>(null);
     const [revealCards, setRevealCards] = useState(false);
@@ -34,7 +35,7 @@ export function PartyProvider({ children }: { children: JSX.Element | ReactEleme
       playersList, setPlayersList, socket, classroomName, setClassroomName, isOwner,
        setOwners, globalTypeOfScores, setGlobalTypeOfScores, setAverageVotes, averageVotes,
         amountOfVotes, setAmountOfVotes, revealCards, setRevealCards, allNonSpectatorVoted,
-        contextCard, setContextCard}}>
+        contextCard, setContextCard, invitationBlur, setInvitationBlur}}>
         {children}
     </PartyContext.Provider>
   );
