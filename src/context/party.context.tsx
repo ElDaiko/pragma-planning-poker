@@ -15,17 +15,22 @@ const socket = io("http://localhost:8080", {
 
 export function PartyProvider({ children }: { children: JSX.Element | ReactElement | ReactElement[] }) {
     const [playersList, setPlayersList] = useState<Player[]>([])
+    const [owners, setOwners] = useState<string[]>([])
+    const isOwner = owners.includes(socket.id??'')
+
     const[averageVotes, setAverageVotes] = useState<string | null>(null)
     const[amountOfVotes, setAmountOfVotes] = useState<AmountOfVotes[]>([])
+
     const [classroomName, setClassroomName] = useState<string | null>(null)
     const [invitationBlur, setInvitationBlur] = useState(Boolean)
-    const [owners, setOwners] = useState<string[]>([])
+    
     const [contextCard, setContextCard] = useState<string | null>(null);
     const [revealCards, setRevealCards] = useState(false);
+
     const [globalTypeOfScores, setGlobalTypeOfScores] = useState<string>("fibonacci")
-    const isOwner = owners.includes(socket.id??'')
-    const nonSpectatorUsers = playersList.filter(user => user.type !== "spectador");
     const voted = playersList.filter(user => user.vote && Number(user.vote) >= 0);
+
+    const nonSpectatorUsers = playersList.filter(user => user.type !== "spectador");
     const allNonSpectatorVoted = nonSpectatorUsers.length > 0 && nonSpectatorUsers.length == voted?.length;
     
 
