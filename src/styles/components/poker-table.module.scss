@@ -14,6 +14,7 @@
     grid-area: header;
     display: grid;
     align-items: center;
+    grid-template-columns: repeat(3, 1fr);
   }
 
   &__logo {
