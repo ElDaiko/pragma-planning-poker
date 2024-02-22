@@ -40,7 +40,7 @@ export function PartyProvider({ children }: { children: JSX.Element | ReactEleme
       playersList, setPlayersList, socket, classroomName, setClassroomName, isOwner,
        setOwners, globalTypeOfScores, setGlobalTypeOfScores, setAverageVotes, averageVotes,
         amountOfVotes, setAmountOfVotes, revealCards, setRevealCards, allNonSpectatorVoted,
-        contextCard, setContextCard, invitationBlur, setInvitationBlur}}>
+        contextCard, setContextCard, invitationBlur, setInvitationBlur, owners}}>
         {children}
     </PartyContext.Provider>
   );

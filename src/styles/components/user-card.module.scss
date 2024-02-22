@@ -30,6 +30,18 @@
     align-items: center;
     color: #330072;
     font-weight: bolder;
+
+    &-size{
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+    }
+  }
+
+  &-admin{
+    gap: 8px;
+    display: flex;
+    align-items: center;
   }
 
 }
