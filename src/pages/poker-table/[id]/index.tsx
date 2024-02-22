@@ -9,25 +9,25 @@ const Index = () => {
   const { socket, setPlayersList, setClassroomName, setOwners ,setAverageVotes, setAmountOfVotes, setRevealCards, setContextCard} = usePartyContext();
 
   useEffect(() => {
-    socket.on("join-classroom", function (data) {
+  socket.on("join-classroom", function (data) {
       setOwners(data.classroom.owners)
       setPlayersList(data.players);
       setClassroomName(data.classroom.name);
     });
 
-    socket.on(
+  socket.on(
       "update-classroom",
       function ({ players }: { players: Player[] }) {
         setPlayersList(players);
       }
     );
 
-/*     socket.on(
+  socket.on(
       "add-admin", 
       function ({ players, classroom }: { classroom: Classroom, players: Player[] }) {
       setPlayersList(players)
       setOwners(classroom.owners)
-  }) */
+  })
 
   socket.on("player-disconnected", function ({ players, classroom }: { classroom: Classroom, players: Player[] }) {
     setOwners(classroom.owners)
