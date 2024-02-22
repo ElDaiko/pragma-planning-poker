@@ -3,7 +3,7 @@ import styles from "../../styles/components/user-card.module.scss";
 import { usePartyContext } from "@/hooks/usePartyContext";
 
 export default function Usercard() {
-  const { playersList } = usePartyContext();
+  const { playersList, owners } = usePartyContext();
 
   return (
     <>
@@ -14,7 +14,11 @@ export default function Usercard() {
               <p>{user.username.slice(0, 2).toUpperCase()}</p>
             ) : null}
           </div>
-          <p>{user.username}</p>
+          <div className={styles["card-admin"]}>
+            <p>{owners.includes(user.socketID) && "👑"}</p>
+            <p>{user.username}</p>
+            <p style={{visibility:"hidden"}}>{ owners.includes(user.socketID) && "👑"}</p>
+          </div>
         </div>
       ))}
     </>

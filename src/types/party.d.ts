@@ -8,6 +8,7 @@ export interface PartyContext {
     setClassroomName: SetState<string | null>,
     isOwner: boolean
     setOwners: SetState<string[]>
+    owners: string[]
     globalTypeOfScores: string
     setGlobalTypeOfScores: SetState<TypeOfScores>
     averageVotes: string | null
