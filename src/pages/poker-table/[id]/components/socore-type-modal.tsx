@@ -18,18 +18,21 @@ const SocoreTypeModal = ({ onClose }:any) => {
         <div className={`${styles["container"]} ${styles["container__blur"]}`}>
             <div className={`${styles["container__modal"]} `}>
                 <div className={`${styles["container__title"]} `}>
-                    <h3>Modo visualización</h3>
+                    <h3>Modo de Juego</h3>
                 </div>
                 <div className={`${styles["container__mode"]} `}>
-                    <div onClick={() => handleUpdateScore('power-of-two')} className={styles["container__mode-player"]}>
-                        <p>power</p>
+                    <div className={styles['container_score']} onClick={() => handleUpdateScore('power-of-two')}>
+                        <div className={styles['container_score-icons']}>🂡</div>
+                        <p>Power</p>
                     </div>
-                    <div onClick={() => handleUpdateScore('fibonacci')} className={styles["container__mode-spectator"]}>
-                        <p style={{ fontWeight: '200' }}>fibo</p>
+                    <div className={styles['container_score']} onClick={() => handleUpdateScore('fibonacci')}>
+                        <div className={styles['container_score-icons']}>🂢</div>
+                        <p>Fibonacci</p>
                     </div>
-                    <div onClick={() => handleUpdateScore('lineal')} className={styles["container__mode-spectator"]}>
-                        <p style={{ fontWeight: '200' }}>lineal</p>
-                    </div>
+                    <div className={styles['container_score']} onClick={() => handleUpdateScore('lineal')}>
+                        <div className={styles['container_score-icons']}>🂣</div>
+                        <p>Lineal</p>
+                    </div>         
                 </div>
             </div>
         </div>
