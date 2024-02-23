@@ -12,9 +12,9 @@ export default function Footer() {
     revealCards,
     socket,
     allNonSpectatorVoted,
-    contextCard, setContextCard
+    contextCard, setContextCard, globalTypeOfScores
   } = usePartyContext();
-  const cardNumbers = typesOfScores["fibonacci"];
+  const cardNumbers = typesOfScores[globalTypeOfScores];
 
   useEffect(() => {
     if (contextCard != null) {
