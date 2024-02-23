@@ -89,4 +89,19 @@
       }
     }
   }
+
+  &_score{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: color 0.5s;
+
+    &-icons{
+      font-size: 60px;
+    }
+    &:hover {
+      cursor: pointer;
+      color: #e4a4ff;
+    }
+  }
 }

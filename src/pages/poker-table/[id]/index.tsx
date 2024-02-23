@@ -6,7 +6,7 @@ import { Player } from "@/types/player";
 import { Classroom } from "@/types/classroom";
 
 const Index = () => {
-  const { socket, setPlayersList, setClassroomName, setOwners ,setAverageVotes, setAmountOfVotes, setRevealCards, setContextCard} = usePartyContext();
+  const { socket, setPlayersList, setClassroomName, setOwners ,setAverageVotes, setAmountOfVotes, setRevealCards, setContextCard, setGlobalTypeOfScores} = usePartyContext();
 
   useEffect(() => {
   socket.on("join-classroom", function (data) {
@@ -48,6 +48,11 @@ const Index = () => {
 })
 
 socket.on("update-player", function ({ players }: { players: Player[] }) {
+  setPlayersList(players)
+})
+
+socket.on("change-type-of-score", function ({ players, classroom }: { classroom: Classroom, players: Player[] }) {
+  setGlobalTypeOfScores(classroom.typeOfScores)
   setPlayersList(players)
 })
 
