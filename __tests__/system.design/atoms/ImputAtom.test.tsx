@@ -1,24 +1,24 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import ButtonAtom from '@/system-design/atoms/button';
+import InputAtom from '@/system-design/atoms/input';
 
 // Realiza las pruebas
-describe('ButtonAtom', () => {
+describe('InputAtom', () => {
   it('renders without crashing', () => {
-    render(<ButtonAtom />);
+    render(<InputAtom id="test-id" />);
     // Verifica que el componente se renderice sin errores
-    expect(screen.getByRole('button')).toBeInTheDocument();
+    expect(screen.getByRole('textbox')).toBeInTheDocument();
   });
 
   it('applies custom className', () => {
-    render(<ButtonAtom className="custom-class" />);
+    render(<InputAtom id="test-id" className="custom-class" />);
     // Verifica que el className personalizado se aplique correctamente
-    expect(screen.getByRole('button')).toHaveClass('custom-class');
+    expect(screen.getByRole('textbox')).toHaveClass('custom-class');
   });
 
   it('applies additional props', () => {
-    render(<ButtonAtom data-testid="custom-testid" />);
+    render(<InputAtom id="test-id" data-testid="custom-testid" />);
     // Verifica que las propiedades adicionales se apliquen correctamente
     expect(screen.getByTestId('custom-testid')).toBeInTheDocument();
   });
