@@ -16,7 +16,8 @@ const config: Config = {
     'src/**/*.{js,jsx,ts,tsx}',
     '!src/**/types/**/*.{js,jsx,ts,tsx}',
     '!src/**/index.ts',
-    '!src/app/layout.tsx'
+    '!./src/pages/_app.tsx',
+    '!./src/pages/_document.tsx'
   ],
   preset: 'ts-jest',
 }
