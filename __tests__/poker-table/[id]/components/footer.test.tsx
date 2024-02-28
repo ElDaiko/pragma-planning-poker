@@ -85,7 +85,6 @@ describe("Footer player", () => {
       </PartyProvider>
     );
   
-    // Esperar a que se resuelva la ejecución de efectos y otras operaciones asíncronas
     expect(screen.queryByText("Elige una carta 👇")).toBeNull();
     expect(screen.queryByText("1")).toBeNull();
     expect(socketFn).not.toHaveBeenCalled();

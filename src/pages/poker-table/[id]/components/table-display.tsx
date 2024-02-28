@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "../../../../styles/components/poker-table.module.scss";
 import Usercard from "@/system-design/atoms/user-card";
 import { usePartyContext } from "@/hooks/usePartyContext";
@@ -7,7 +7,7 @@ import InvitationModal from "./invitation-modal";
 import Header from "./header";
 
 const TableDisplay = () => {
-  const { classroomName, socket, isOwner, allNonSpectatorVoted, setInvitationBlur, invitationBlur } =
+  const {socket, isOwner, allNonSpectatorVoted, invitationBlur } =
     usePartyContext();
   const [reset, setReset] = useState(false);
 
