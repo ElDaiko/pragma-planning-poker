@@ -19,7 +19,7 @@ describe("Footer", () => {
   it("Should render voting options for players", () => {
     const mockParty = usePartyContext as jest.MockedFunction<typeof usePartyContext>;
     mockParty.mockReturnValue({
-        rolConText: "player",
+      rolConText: "player",
       revealCards: false,
       allNonSpectatorVoted: false,
       amountOfVotes: null,
@@ -50,8 +50,6 @@ describe("Footer", () => {
     fireEvent.click(screen.getByText("1"));
     expect(jestFn).toHaveBeenCalled()
     expect(socketFn).toHaveBeenCalled();
-
-    screen.debug()
 
   });
 

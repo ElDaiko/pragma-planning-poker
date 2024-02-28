@@ -8,12 +8,11 @@ import usePartyNameValidation from "@/hooks/usePartyNameValidation";
 import { usePartyContext } from "@/hooks/usePartyContext";
 
 const UserForm = () => {
-  const [socketID, setSocketID] = useState("");
   const [blur, setBlur] = useState(false);
   const [username, setUsername] = useState("");
   const [selectedOption, setSelectedOption] = useState("");
-  const { setUsernameContext, setRolConText, setPartyContext, userNameContext } = useUserContext();
-  const { socket, playersList, isOwner } = usePartyContext();
+  const { setUsernameContext, setRolConText } = useUserContext();
+  const { socket } = usePartyContext();
   const router = useRouter();
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -52,6 +51,7 @@ const UserForm = () => {
             >
               <h3 className={styles["modal-title"]}>Tu nombre</h3>
               <InputAtom
+                role="userNameInput"
                 name="username"
                 id={username}
                 type="text"
@@ -61,6 +61,7 @@ const UserForm = () => {
               <div className={`${styles["modal-radioInput__position"]}`}>
                 <label>Jugador</label>
                 <input
+                  role="player"
                   name="type"
                   className={`${styles["modal-radioInput"]}`}
                   defaultChecked
@@ -70,6 +71,7 @@ const UserForm = () => {
 
                 <label style={{ marginLeft: "40px" }}>Espectador</label>
                 <input
+                  role="spectador"
                   name="type"
                   className={`${styles["modal-radioInput"]}`}
                   type="radio"
@@ -81,6 +83,7 @@ const UserForm = () => {
                 className={`${styles["modal-button"]} ${
                   validate.length ? styles["modal-button__disabled"] : ""
                 }`}
+                role="create"
               >
                 Crear Partida
               </ButtonAtom>

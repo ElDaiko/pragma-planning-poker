@@ -61,7 +61,6 @@ describe("UserCard", () => {
           );
     })
   it("Should render users correctly", () => {
-/*     screen.debug(); */
 
     //Bucsar que se le haga el render a los 3 usuarNames
     expect(screen.getByText('pepe')).toBeInTheDocument();

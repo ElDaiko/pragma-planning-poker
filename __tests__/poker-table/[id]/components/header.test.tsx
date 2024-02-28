@@ -66,7 +66,6 @@ describe("Header", () => {
   it("Shoul open invite modal on Click", () => {
     fireEvent.click(screen.getByRole("invite"));
     expect(screen.getByText("Invitar jugadores")).toBeInTheDocument();
-    screen.debug()
   })
 
 });
