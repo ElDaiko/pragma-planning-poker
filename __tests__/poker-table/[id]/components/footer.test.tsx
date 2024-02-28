@@ -15,7 +15,11 @@ jest.mock("../../../../src/hooks/useUserContext");
 const jestFn = jest.fn();
 const socketFn = jest.fn();
 
-describe("Footer", () => {
+describe("Footer player", () => {
+  afterEach(() => {
+    // Limpiar mocks después de cada prueba
+    jest.clearAllMocks();
+  });
   it("Should render voting options for players", () => {
     const mockParty = usePartyContext as jest.MockedFunction<typeof usePartyContext>;
     mockParty.mockReturnValue({
@@ -52,6 +56,41 @@ describe("Footer", () => {
     expect(socketFn).toHaveBeenCalled();
 
   });
+  it("Should not emit socket event for spectador", () => {
+    const mockParty = usePartyContext as jest.MockedFunction<typeof usePartyContext>;
+    mockParty.mockReturnValue({
+      rolConText: "spectador",
+      revealCards: false,
+      allNonSpectatorVoted: false,
+      amountOfVotes: null,
+      averageVotes: null,
+      socket: {
+        emit: socketFn,
+      },
+      contextCard: null,
+      setContextCard: jestFn,
+      globalTypeOfScores: "power-of-two",
+    } as any);
+  
+    const mockUser = useUserContext as jest.MockedFunction<typeof useUserContext>;
+    mockUser.mockImplementation(() => ({
+      rolConText: "spectador",
+    }) as any);
+  
+    render(
+      <PartyProvider>
+        <UserProvider>
+          <Footer />
+        </UserProvider>
+      </PartyProvider>
+    );
+  
+    // Esperar a que se resuelva la ejecución de efectos y otras operaciones asíncronas
+    expect(screen.queryByText("Elige una carta 👇")).toBeNull();
+    expect(screen.queryByText("1")).toBeNull();
+    expect(socketFn).not.toHaveBeenCalled();
+    expect(jestFn).not.toHaveBeenCalled();
+  });
 
   it("Should render voting results for players when all voted", () => {
     const mockParty = usePartyContext as jest.MockedFunction<typeof usePartyContext>;
@@ -67,7 +106,7 @@ describe("Footer", () => {
         socket: {
           emit: jestFn,
         },
-        contextCard: null,
+        contextCard: 1,
         setContextCard: jestFn,
         globalTypeOfScores: "power-of-two",
     } as any);
@@ -91,3 +130,7 @@ describe("Footer", () => {
   });
 
 });
+
+describe("footer spectador", () => {
+
+})
