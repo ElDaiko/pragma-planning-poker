@@ -14,6 +14,10 @@ describe("SocoreTypeModal", () => {
   const jestFn = jest.fn();
   const onCloseMock = jest.fn();
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   beforeEach(() => {
     const mock = usePartyContext as jest.MockedFunction<typeof usePartyContext>;
     mock.mockReturnValue({
@@ -30,14 +34,17 @@ describe("SocoreTypeModal", () => {
   });
   it("Should update score to power-of-two", () => {
     fireEvent.click(screen.getByRole("powerClick"))
-    expect(jestFn).toHaveBeenCalled()
+    expect(jestFn).toHaveBeenCalledTimes(1)
+    expect(jestFn).toHaveBeenCalledWith("change-type-of-score", {typeOfScores: "power-of-two"})
   })
-  it("Should update score to power-of-two", () => {
+  it("Should update score to fibonacci", () => {
     fireEvent.click(screen.getByRole("fibonacciClick"))
-    expect(jestFn).toHaveBeenCalled()
+    expect(jestFn).toHaveBeenCalledTimes(1)
+    expect(jestFn).toHaveBeenCalledWith("change-type-of-score", {typeOfScores: "fibonacci"})
   })
-  it("Should update score to power-of-two", () => {
+  it("Should update score to lineal", () => {
     fireEvent.click(screen.getByRole("linealClick"))
-    expect(jestFn).toHaveBeenCalled()
+    expect(jestFn).toHaveBeenCalledTimes(1)
+    expect(jestFn).toHaveBeenCalledWith("change-type-of-score", {typeOfScores: "lineal"})
   })
 });

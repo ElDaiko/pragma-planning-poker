@@ -52,8 +52,12 @@ describe("Footer player", () => {
     expect(screen.getByText("Elige una carta 👇")).toBeInTheDocument();
 
     fireEvent.click(screen.getByText("1"));
-    expect(jestFn).toHaveBeenCalled()
-    expect(socketFn).toHaveBeenCalled();
+
+    expect(socketFn).toHaveBeenCalledTimes(1)
+    expect(socketFn).toHaveBeenCalledWith("vote", { card: "1" })
+
+    expect(jestFn).toHaveBeenCalledTimes(1)
+    expect(jestFn).toHaveBeenCalled();
 
   });
   it("Should not emit socket event for spectador", () => {
@@ -87,7 +91,7 @@ describe("Footer player", () => {
   
     expect(screen.queryByText("Elige una carta 👇")).toBeNull();
     expect(screen.queryByText("1")).toBeNull();
-    expect(socketFn).not.toHaveBeenCalled();
+    expect(socketFn).not.toHaveBeenCalledWith("vote");
     expect(jestFn).not.toHaveBeenCalled();
   });
 
@@ -129,7 +133,3 @@ describe("Footer player", () => {
   });
 
 });
-
-describe("footer spectador", () => {
-
-})

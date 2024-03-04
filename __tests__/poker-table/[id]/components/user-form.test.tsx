@@ -58,13 +58,14 @@ describe('UserForm', () => {
         // Espera a que las llamadas a las funciones mockeadas se resuelvan
         await waitFor(() => {
             // Asegúrate de que handleCreateParty se haya llamado con los argumentos esperados
+            expect(socketFn).toHaveBeenCalledTimes(1)
             expect(socketFn).toHaveBeenCalledWith('join-classroom', {
                 username: 'pepe1',
                 type: 'player',
                 roomID: 'mocked-id',
             });
-            expect(jestFn).toHaveBeenCalled()
-            expect(jestFn2).toHaveBeenCalled()        
+            expect(jestFn).toHaveBeenCalledTimes(1)
+            expect(jestFn2).toHaveBeenCalledTimes(1)        
         });
     });
   });

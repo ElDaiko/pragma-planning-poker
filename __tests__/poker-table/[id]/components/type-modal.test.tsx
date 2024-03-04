@@ -19,6 +19,10 @@ describe("TypeModal", () => {
   const jestFnParty = jest.fn();
   const jestFnUser = jest.fn();
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   beforeEach(() => {
     const mockParty = usePartyContext as jest.MockedFunction<typeof usePartyContext>;
     mockParty.mockReturnValue({
@@ -44,14 +48,20 @@ describe("TypeModal", () => {
   it("Should update user type to player", () => {
     fireEvent.click(screen.getByRole("mode-player"));
 
+    expect(jestFnParty).toHaveBeenCalledTimes(1)
     expect(jestFnParty).toHaveBeenCalledWith("update-player", { type: "player" });
+
+    expect(jestFnUser).toHaveBeenCalledTimes(1)
     expect(jestFnUser).toHaveBeenCalledWith("player");
   });
 
   it("Should update user type to spectator", () => {
     fireEvent.click(screen.getByRole("mode-spectator"));
 
+    expect(jestFnParty).toHaveBeenCalledTimes(1)
     expect(jestFnParty).toHaveBeenCalledWith("update-player", { type: "spectador" });
+
+    expect(jestFnUser).toHaveBeenCalledTimes(1)
     expect(jestFnUser).toHaveBeenCalledWith("spectador");
   });
 });

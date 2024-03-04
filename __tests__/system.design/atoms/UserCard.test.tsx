@@ -76,11 +76,12 @@ describe("UserCard", () => {
     /* expect(screen.getByText('pepe').parentElement?.parentElement?.firstElementChild).toHaveClass("card__player") */
 
   });
-  it("Should give admin onClick", () => {
+  it("Should call give admin o click", () => {
     //En el evento onclick de el X rol se hace el act, en la primera posicion porque son 2 usuario con ese estilo
     fireEvent.click(screen.getAllByRole("playerCard")[0])
     //Revisa que la funcion se haya llamado haciendo el accert
     //El socket.emit tiene el valor del jestFn, y se ejecuta la funcion mockeada en el click
-    expect(jestFn).toHaveBeenCalled()
+    expect(jestFn).toHaveBeenCalledTimes(1);
+    expect(jestFn).toHaveBeenCalledWith("add-admin", {socketID: "socket"} );
   })
 });

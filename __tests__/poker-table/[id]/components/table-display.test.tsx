@@ -62,11 +62,14 @@ describe("TableDisplay", () => {
       </PartyProvider>
     );
 
-    fireEvent.click(screen.getByText("Revelar Cartas"));
-    expect(socketFn).toHaveBeenCalled();
-    expect(screen.getByText("Nueva votación")).toBeInTheDocument();
-    fireEvent.click(screen.getByText("Nueva votación"));
-    expect(screen.getByText("Revelar Cartas")).toBeInTheDocument();
+  fireEvent.click(screen.getByText("Revelar Cartas"));
+  expect(socketFn).toHaveBeenCalledTimes(1)
+  expect(socketFn).toHaveBeenCalledWith("reveal-cards");
+  
+  fireEvent.click(screen.getByText("Nueva votación"));
+  expect(socketFn).toHaveBeenCalledWith("reset-classroom");
+  expect(socketFn).toHaveBeenCalledTimes(2)
+
   });
   it("Should not render `revelar cartas`", async () => {
     const mock = usePartyContext as jest.MockedFunction<typeof usePartyContext>;
