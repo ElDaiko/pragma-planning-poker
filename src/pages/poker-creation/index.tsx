@@ -28,13 +28,15 @@ const Index = () => {
       </header>
       <main className={styles['modal']}>
         <h3 className={styles['modal-title']}>Nombra la partida</h3>
-        <InputAtom 
+        <InputAtom
+          role="input" 
           id={partyName}
           type="text"
           value={partyName}
           onChange={handleInputChange}
         />
         <ButtonAtom
+        role="click"
           className={`${styles['modal-button']} ${
             validate.length ? styles['modal-button__disabled'] : ""
           }`}

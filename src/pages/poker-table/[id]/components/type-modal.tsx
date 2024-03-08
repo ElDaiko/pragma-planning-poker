@@ -21,10 +21,10 @@ const TypeModal = ({ onClose }:any) => {
                     <h3>Modo visualización</h3>
                 </div>
                 <div className={`${styles["container__mode"]} `}>
-                    <div onClick={() => handleUpdateUser('player')} className={styles["container__mode-player"]}>
+                    <div role='mode-player' onClick={() => handleUpdateUser('player')} className={styles["container__mode-player"]}>
                         <p>♥️</p>
                     </div>
-                    <div onClick={() => handleUpdateUser('spectador')} className={styles["container__mode-spectator"]}>
+                    <div role='mode-spectator' onClick={() => handleUpdateUser('spectador')} className={styles["container__mode-spectator"]}>
                         <p style={{ fontWeight: '200' }}>👁</p>
                     </div>
                 </div>

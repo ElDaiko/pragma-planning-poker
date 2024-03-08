@@ -1,6 +1,6 @@
 "use client";
 import { AxiosResponse } from "axios";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import axiosCreator from "axios";
 
 export function useCreateParty() {
@@ -30,5 +30,5 @@ export function useCreateParty() {
     }
   }
 
-  return { createParty };
+  return { createParty};
 }

@@ -18,12 +18,12 @@ const InvitationModal = () => {
             <div className={`${styles["container__modal"]} `}>
                 <div className={`${styles["container__title"]} `}>
                     <h3 className={styles["container__title-text"]}>Invitar jugadores</h3>
-                    <h3 onClick={() => setInvitationBlur(false)} className={styles["container__title-exit"]}>X</h3>
+                    <h3 role='blurClick' onClick={() => setInvitationBlur(false)} className={styles["container__title-exit"]}>X</h3>
                 </div>
                 <div className={`${styles["container__link"]} `}>
-                    <p className={styles["container__link-text"]}>{currentUrl}</p>
+                    <p role='url' className={styles["container__link-text"]}>{currentUrl}</p>
                 </div>
-                <ButtonAtom  onClick={() => navigator.clipboard.writeText(currentUrl)} className={`${styles["container__button"]} `}>Copiar link</ButtonAtom>
+                <ButtonAtom role='clipClick' onClick={() => navigator.clipboard.writeText(currentUrl)} className={`${styles["container__button"]} `}>Copiar link</ButtonAtom>
             </div>
         </div>
     );

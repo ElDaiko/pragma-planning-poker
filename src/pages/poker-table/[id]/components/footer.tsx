@@ -12,7 +12,9 @@ export default function Footer() {
     revealCards,
     socket,
     allNonSpectatorVoted,
-    contextCard, setContextCard, globalTypeOfScores
+    contextCard,
+    setContextCard,
+    globalTypeOfScores,
   } = usePartyContext();
   const cardNumbers = typesOfScores[globalTypeOfScores];
 
@@ -22,10 +24,9 @@ export default function Footer() {
     }
   }, [contextCard]);
 
-
   return (
     <>
-      {(revealCards && allNonSpectatorVoted && amountOfVotes) ? (
+      {revealCards && allNonSpectatorVoted && amountOfVotes ? (
         <>
           <footer>
             {amountOfVotes?.map((number, index) => (
@@ -57,9 +58,13 @@ export default function Footer() {
               <footer>
                 {cardNumbers?.map((number, index) => (
                   <button
+                    role="setCard"
                     onClick={() => setContextCard(number)}
                     key={index}
-                    className={`${styles["container__cards-vote"]} ${contextCard == number && styles["container__cards-vote--voted"]}`}
+                    className={`${styles["container__cards-vote"]} ${
+                      contextCard == number &&
+                      styles["container__cards-vote--voted"]
+                    }`}
                   >
                     {number}
                   </button>

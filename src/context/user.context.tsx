@@ -1,6 +1,5 @@
 import { ReactElement, createContext, useState } from "react";
 import { UserContext as userContextType } from '../types/user';
-import {io} from 'socket.io-client'
 
 export const UserContext = createContext<userContextType | null>(null);
 

@@ -43,7 +43,7 @@ const Header = () => {
       />
       <h1 className={`${styles["container__title"]}`}>{classroomName}</h1>
       <div className={`${styles["container__user"]}`}>
-        <button className={styles["container__user-button"]} onClick={handleButtonClick}>
+        <button role="options" className={styles["container__user-button"]} onClick={handleButtonClick}>
             <div className={`${stylesC["card__spectator"]} ${stylesC["card__spectator-size"]}`} >
                 <p>{userNameContext.slice(0, 2).toUpperCase()}</p>
             </div>
@@ -54,6 +54,7 @@ const Header = () => {
             <p onClick={() => handleScoreClickModal()} className={styles["container__user-display-text"]}>Cambiar juego</p>
         </div> }
         <button
+          role="invite"
           onClick={() => setInvitationBlur(true)}
           className={`${styles["container__user-invite"]}`}
         >
