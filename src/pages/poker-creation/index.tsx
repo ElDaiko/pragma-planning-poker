@@ -4,8 +4,13 @@ import ButtonAtom from "@/system-design/atoms/button";
 import styles from '../../styles/poker-creation.module.scss';
 import usePartyNameValidation from "@/hooks/usePartyNameValidation";
 import { useCreateParty } from "@/hooks/useCreateParty";
+import config from '../../amplifyconfiguration.json';
+import { Amplify } from 'aws-amplify';
+import type { WithAuthenticatorProps } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
+Amplify.configure(config);
 
-const Index = () => {
+const Index = ({ user, signOut }: WithAuthenticatorProps) => {
   const [partyName, setPartyName] = useState("");
   const { validate } = usePartyNameValidation(partyName);
   const { createParty} = useCreateParty()
