@@ -1,0 +1,47 @@
+$width: 100px;
+$animationDuration: 1s;
+
+.ball-loader{
+  width: $width;
+  height: $width / 3;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  display: flex;
+}
+
+.ball-loader-ball{
+  will-change: transform;
+  height: $width / 11 * 3;
+  width: $width / 11 * 3;
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px #6429cd;
+  display: inline-block;
+  animation: grow $animationDuration infinite alternate;
+  transform-origin: 50% 50%;
+  
+  &.ball1{
+    margin-right: $width / 11;
+  }
+  
+  &.ball2{
+    margin-right: $width / 11;
+    animation-delay: - $animationDuration * .33;
+  }
+  
+  &.ball3{
+    animation-delay: - $animationDuration * .66;
+  }
+}
+
+@keyframes grow{
+  0%{
+    transform: scale(1);
+  }
+  50%{
+  }
+  100%{
+    transform: scale(.2);
+  }
+}
