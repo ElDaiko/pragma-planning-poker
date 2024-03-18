@@ -27,7 +27,7 @@ const Index = () => {
     // Simular una carga ficticia
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 3500);
 
     // Limpiar el temporizador en la limpieza del efecto
     return () => clearTimeout(timer);

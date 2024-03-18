@@ -21,8 +21,6 @@ const TableDisplay = () => {
     }, 3000);
   }
 
-  console.log(loadingVotes);
-
   function handleResetMatch() {
     socket.emit("reset-classroom");
   }

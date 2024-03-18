@@ -113,7 +113,6 @@
   &__desk {
     grid-area: desk;
     border-radius: 261px;
-    box-shadow: 0 0 50px 0 #44198a, inset 0 0 10px 0 #44198a;
     margin: auto;
     border: 2px solid #7443d6;
     width: 603px;
@@ -123,7 +122,6 @@
   &__desk2 {
     grid-area: desk;
     border-radius: 261px;
-    box-shadow: 0 0 50px 0 #44198a, inset 0 0 10px 0 #44198a;
     margin: auto;
     border: 2px solid #947ae8;
     width: 555px;
@@ -134,7 +132,6 @@
     display: grid;
     grid-area: desk;
     border-radius: 261px;
-    box-shadow: 0 0 50px 0 #44198a, inset 0 0 10px 0 #44198a;
     margin: auto;
     border: 1px solid #6429cd;
     width: 521px;
@@ -163,8 +160,8 @@
     width: 51px;
     height: 86px;
     border: 2px solid #7443d6;
-    background-color: #1f1138;
-    box-shadow: 0 0 50px 0 #44198a, inset 0 0 10px 0 #44198a;
+    background-color: transparent;
+    box-shadow: 0 0 12px 0 #44198a, inset 0 0 10px 0 #44198a;
     border-radius: 10px;
     font-size: 16px;
     font-weight: bolder;
@@ -186,7 +183,7 @@
       &:hover {
         cursor: pointer;
         border: none;
-        background-color: #e4a4ff;
+        background-color: #686176;
         color: #330072;
         transform: translateY(-8px);
       }
