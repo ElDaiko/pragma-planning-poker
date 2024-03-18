@@ -85,7 +85,7 @@ const UserForm = () => {
                 }`}
                 role="create"
               >
-                Crear Partida
+                Continuar
               </ButtonAtom>
             </form>
           </div>
