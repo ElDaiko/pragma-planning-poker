@@ -18,7 +18,8 @@ const TypeModal = ({ onClose }:any) => {
         <div className={`${styles["container"]} ${styles["container__blur"]}`}>
             <div className={`${styles["container__modal"]} `}>
                 <div className={`${styles["container__title"]} `}>
-                    <h3>Modo visualización</h3>
+                    <h3 className={`${styles["container__title__text2"]}`}>Modo visualización</h3>
+                    <h3 onClick={() => onClose()} className={`${styles["container__title__exit"]} `}>X</h3>
                 </div>
                 <div className={`${styles["container__mode"]} `}>
                     <div role='mode-player' onClick={() => handleUpdateUser('player')} className={styles["container__mode-player"]}>

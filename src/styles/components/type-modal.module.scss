@@ -26,7 +26,8 @@
   }
 
   &__title {
-    display: grid;
+    display: flex;
+    grid-template-columns: 1fr, 0.5fr;
     grid-row: 1;
     background-color: #6429cd;
     border-radius: 25px 25px 0 0;
@@ -34,14 +35,23 @@
     width: 100%;
     height: 54px;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 
-    &-exit {
+    &__exit {
       font-weight: lighter;
-      display: flex;
-      margin-right: 25px;
       justify-content: flex-end;
       cursor: pointer;
+      display: grid;
+      justify-content: end;
+      margin-right: 20px;
+    }
+
+    &__text {
+      margin-left: 32%;
+    }
+
+    &__text2 {
+      margin-left: 28%;
     }
   }
 
@@ -90,13 +100,13 @@
     }
   }
 
-  &_score{
+  &_score {
     display: flex;
     flex-direction: column;
     align-items: center;
     transition: color 0.5s;
 
-    &-icons{
+    &-icons {
       font-size: 60px;
     }
     &:hover {
