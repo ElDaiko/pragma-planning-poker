@@ -5,14 +5,17 @@
   align-items: center;
 
   &__player {
+    display: flex;
     width: 35px;
     height: 60px;
     border: 2px solid #bc91ff;
     border-radius: 7px;
-    transition: background-color 0.5s
+    transition: background-color 0.5s;
+    justify-content: center;
+    align-items: center;
   }
 
-  &__playerVote{
+  &__playerVote {
     width: 35px;
     height: 60px;
     border-radius: 7px;
@@ -31,17 +34,16 @@
     color: #330072;
     font-weight: bolder;
 
-    &-size{
+    &-size {
       width: 36px;
       height: 36px;
       cursor: pointer;
     }
   }
 
-  &-admin{
+  &-admin {
     gap: 8px;
     display: flex;
     align-items: center;
   }
-
 }
