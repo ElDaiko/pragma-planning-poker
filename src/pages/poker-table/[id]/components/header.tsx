@@ -5,6 +5,7 @@ import { usePartyContext } from "@/hooks/usePartyContext";
 import { useUserContext } from "@/hooks/useUserContext";
 import TypeModal from "./type-modal";
 import SocoreTypeModal from "./socore-type-modal";
+import { useRouter } from "next/router";
 
 const Header = () => {
   const { classroomName, setInvitationBlur } = usePartyContext();
@@ -32,12 +33,18 @@ const Header = () => {
     setScoreModal(false);
 };
 
+const router = useRouter();
+
+  const handleClick = () => {
+  router.push("/");
+  ;
+}
   return (
   <>
   {handleModal && <TypeModal onClose={closeModal} />}
   {scoreModal && <SocoreTypeModal onClose={closeModal} />}
   <header>
-      <img
+      <img onClick={handleClick}
         className={`${styles["container__logo"]}`}
         src="/images/ficha-de-poker.png"
       />

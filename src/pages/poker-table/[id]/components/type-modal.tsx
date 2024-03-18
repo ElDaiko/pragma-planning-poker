@@ -22,11 +22,17 @@ const TypeModal = ({ onClose }:any) => {
                     <h3 onClick={() => onClose()} className={`${styles["container__title__exit"]} `}>X</h3>
                 </div>
                 <div className={`${styles["container__mode"]} `}>
-                    <div role='mode-player' onClick={() => handleUpdateUser('player')} className={styles["container__mode-player"]}>
-                        <p>♥️</p>
+                    <div className={`${styles["container__card"]} `}>
+                        <div role='mode-player' onClick={() => handleUpdateUser('player')} className={styles["container__mode-player"]}>
+                            <p>♥️</p>
+                        </div>
+                        <p>Jugador</p>
                     </div>
-                    <div role='mode-spectator' onClick={() => handleUpdateUser('spectador')} className={styles["container__mode-spectator"]}>
-                        <p style={{ fontWeight: '200' }}>👁</p>
+                    <div className={`${styles["container__card"]} `}>
+                        <div role='mode-spectator' onClick={() => handleUpdateUser('spectador')} className={styles["container__mode-spectator"]}>
+                            <p style={{ fontWeight: '200' }}>👁</p>
+                        </div>
+                        <p>Espectador</p>
                     </div>
                 </div>
             </div>
