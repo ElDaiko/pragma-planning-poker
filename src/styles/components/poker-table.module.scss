@@ -37,6 +37,12 @@
     border-radius: 100px;
     color: white;
     background-color: #6429cd;
+
+    transition: box-shadow 0.5s ease;
+
+    &:hover {
+      box-shadow: 0 0 10px 0 #6429CD;
+    }
   }
 
   &__user {
@@ -53,6 +59,14 @@
       font-size: 14px;
       font-weight: 700;
       cursor: pointer;
+
+      transition: box-shadow 0.5s ease;
+
+      &:hover {
+        box-shadow: 0 0 10px 0 #f6f7fc;
+        background-color: #f6f7fc;
+        color: #652bcd;
+      }
     }
 
     &-button {
@@ -176,6 +190,7 @@
         transform: translateY(-8px);
         border: none;
         color: #330072;
+        z-index: -1;
       }
       @include __cards;
       transition: background-color 0.5s, transform 0.5s;

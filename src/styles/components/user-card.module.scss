@@ -38,6 +38,11 @@
       width: 36px;
       height: 36px;
       cursor: pointer;
+      transition: box-shadow 0.5s ease;
+
+    &:hover {
+      box-shadow: 0 0 10px 0 #bdbdff;
+    }
     }
   }
 
