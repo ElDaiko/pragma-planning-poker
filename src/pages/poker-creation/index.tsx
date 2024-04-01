@@ -10,6 +10,7 @@ const Index = () => {
   const [partyName, setPartyName] = useState("");
   const { validate } = usePartyNameValidation(partyName);
   const { createParty } = useCreateParty();
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPartyName(event.target.value);
@@ -18,6 +19,7 @@ const Index = () => {
   const handleCreateParty = () => {
     if (!validate.length) {
       createParty(partyName);
+      setIsButtonDisabled(true);
     }
   };
 
@@ -55,9 +57,9 @@ const Index = () => {
             <ButtonAtom
               role="click"
               className={`${styles["modal-button"]} ${
-                validate.length ? styles["modal-button__disabled"] : ""
+                validate.length ? styles["modal-button__disabled"] :  isButtonDisabled ? styles["modal-button__disabled"] : ""
               }`}
-              onClick={handleCreateParty}
+              onClick={handleCreateParty} disabled={isButtonDisabled}
             >
               Crear Partida
             </ButtonAtom>

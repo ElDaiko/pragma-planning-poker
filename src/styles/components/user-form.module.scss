@@ -66,6 +66,12 @@
     transition: border-color 0.3s ease;
     position: relative;
     margin-left: 10px;
+    font-weight: 700;
+    transition: box-shadow 0.5s ease;
+
+    &:hover {
+      box-shadow: 0 0 10px 0 #6429CD;
+    }
 
     &:checked:before {
       content: "";

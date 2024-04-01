@@ -14,6 +14,7 @@ const UserForm = () => {
   const { setUsernameContext, setRolConText } = useUserContext();
   const { socket } = usePartyContext();
   const router = useRouter();
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(event.target.value);
@@ -28,6 +29,7 @@ const UserForm = () => {
     e.preventDefault()
     const data = Object.fromEntries(new FormData(e.currentTarget)); //vuelve los inputs del formulario en un objeto literal
     if (data.type != "" && !validate.length) {
+      setIsButtonDisabled(true);
       setBlur(true);
       setRolConText(data.type);      
       setUsernameContext(username);
@@ -37,7 +39,7 @@ const UserForm = () => {
         roomID: router.query.id,
       });
     }
-  };
+  };  
 
   const { validate } = usePartyNameValidation(username, selectedOption, true);
 
@@ -81,7 +83,7 @@ const UserForm = () => {
               
               <ButtonAtom
                 className={`${styles["modal-button"]} ${
-                  validate.length ? styles["modal-button__disabled"] : ""
+                  validate.length ? styles["modal-button__disabled"] : isButtonDisabled ? styles["modal-button__disabled"] : ""
                 }`}
                 role="create"
               >
