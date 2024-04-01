@@ -39,13 +39,19 @@
   &-button__disabled {
     opacity: 0.5;
     cursor: unset;
+    background-color: #503178;
+    color: #7e7192;
+
+    &:hover {
+      box-shadow: none;
+    }
   }
 
   &-border__glow {
     border: 1px solid #bb6dff;
     border-radius: 25px;
     padding: 10px;
-    box-shadow: 0 0 50px 0 #44198a, inset 0 0 10px 0 #44198a;
+    box-shadow: 0 0 40px 0 #44198a, inset 0px 0px 15px 0 #44198a;
   }
 
   &-radioInput {
@@ -60,6 +66,12 @@
     transition: border-color 0.3s ease;
     position: relative;
     margin-left: 10px;
+    font-weight: 700;
+    transition: box-shadow 0.5s ease;
+
+    &:hover {
+      box-shadow: 0 0 10px 0 #6429CD;
+    }
 
     &:checked:before {
       content: "";

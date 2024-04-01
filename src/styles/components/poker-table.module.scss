@@ -20,6 +20,7 @@
   &__logo {
     grid-column: 1;
     margin-left: 60px;
+    cursor: pointer;
   }
 
   &__title {
@@ -36,6 +37,12 @@
     border-radius: 100px;
     color: white;
     background-color: #6429cd;
+
+    transition: box-shadow 0.5s ease;
+
+    &:hover {
+      box-shadow: 0 0 10px 0 #6429CD;
+    }
   }
 
   &__user {
@@ -52,6 +59,14 @@
       font-size: 14px;
       font-weight: 700;
       cursor: pointer;
+
+      transition: box-shadow 0.5s ease;
+
+      &:hover {
+        box-shadow: 0 0 10px 0 #f6f7fc;
+        background-color: #f6f7fc;
+        color: #652bcd;
+      }
     }
 
     &-button {
@@ -112,7 +127,6 @@
   &__desk {
     grid-area: desk;
     border-radius: 261px;
-    box-shadow: 0 0 50px 0 #44198a, inset 0 0 10px 0 #44198a;
     margin: auto;
     border: 2px solid #7443d6;
     width: 603px;
@@ -122,7 +136,6 @@
   &__desk2 {
     grid-area: desk;
     border-radius: 261px;
-    box-shadow: 0 0 50px 0 #44198a, inset 0 0 10px 0 #44198a;
     margin: auto;
     border: 2px solid #947ae8;
     width: 555px;
@@ -133,7 +146,6 @@
     display: grid;
     grid-area: desk;
     border-radius: 261px;
-    box-shadow: 0 0 50px 0 #44198a, inset 0 0 10px 0 #44198a;
     margin: auto;
     border: 1px solid #6429cd;
     width: 521px;
@@ -162,8 +174,8 @@
     width: 51px;
     height: 86px;
     border: 2px solid #7443d6;
-    background-color: #1f1138;
-    box-shadow: 0 0 50px 0 #44198a, inset 0 0 10px 0 #44198a;
+    background-color: transparent;
+    box-shadow: 0 0 12px 0 #44198a, inset 0 0 10px 0 #44198a;
     border-radius: 10px;
     font-size: 16px;
     font-weight: bolder;
@@ -178,6 +190,7 @@
         transform: translateY(-8px);
         border: none;
         color: #330072;
+        z-index: -1;
       }
       @include __cards;
       transition: background-color 0.5s, transform 0.5s;
@@ -185,7 +198,7 @@
       &:hover {
         cursor: pointer;
         border: none;
-        background-color: #e4a4ff;
+        background-color: #686176;
         color: #330072;
         transform: translateY(-8px);
       }

@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
-  background: radial-gradient(circle, #31006e, #1f1235);
+  background: radial-gradient(circle, #31006e, #000000);
   color: white;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
@@ -29,6 +29,17 @@ body {
   border-radius: 100px;
   width: 292px;
   margin-top: 10px;
+  outline: none;
+  cursor: pointer;
+  transition: box-shadow 0.5s ease;
+
+  &:hover {
+    box-shadow: 0 0 10px 0 #6429CD;
+  }
+
+  &:focus {
+    box-shadow: 0 0 10px 0 #6429CD;
+  }
 }
 
 .global__button{
@@ -39,5 +50,11 @@ body {
   color: #330072;
   font-size: 14px;
   font-weight: 700;
+
+  transition: box-shadow 0.5s ease;
+
+    &:hover {
+      box-shadow: 0 0 10px 0 #f6f7fc;
+    }
 }
 

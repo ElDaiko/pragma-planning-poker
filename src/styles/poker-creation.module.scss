@@ -25,7 +25,13 @@
   &-button__disabled {
     opacity: 0.5;
     cursor: unset;
+    background-color: #503178;
+    color: #7e7192;
+    &:hover {
+      box-shadow: none;
+    }
   }
+  
 }
 
 .logo-title {

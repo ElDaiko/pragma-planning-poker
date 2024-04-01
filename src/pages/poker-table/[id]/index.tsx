@@ -45,6 +45,7 @@ const Index = () => {
     setAmountOfVotes(null)
     setPlayersList(players)
     setContextCard(null)
+    setRevealCards(false)
 })
 
 socket.on("update-player", function ({ players }: { players: Player[] }) {

@@ -16,7 +16,8 @@ const SocoreTypeModal = ({ onClose }:any) => {
         <div className={`${styles["container"]} ${styles["container__blur"]}`}>
             <div className={`${styles["container__modal"]} `}>
                 <div className={`${styles["container__title"]} `}>
-                    <h3>Modo de Juego</h3>
+                    <h3 className={`${styles["container__title__text"]}`}>Modo de Juego</h3>
+                    <h3 onClick={() => onClose()} className={`${styles["container__title__exit"]} `}>X</h3>
                 </div>
                 <div className={`${styles["container__mode"]} `}>
                     <div role='powerClick' className={styles['container_score']} onClick={() => handleUpdateScore('power-of-two')}>

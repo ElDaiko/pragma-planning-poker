@@ -1,0 +1,56 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-planningpoker-dev-93436-authRole",
+      "UnauthRoleArn": "arn:aws:iam::864817670822:role/amplify-planningpoker-dev-93436-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::864817670822:role/amplify-planningpoker-dev-93436-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-planningpoker-dev-93436-deployment",
+      "UnauthRoleName": "amplify-planningpoker-dev-93436-unauthRole",
+      "StackName": "amplify-planningpoker-dev-93436",
+      "StackId": "arn:aws:cloudformation:us-east-2:864817670822:stack/amplify-planningpoker-dev-93436/d2788c60-e146-11ee-9c11-0632f098a62d",
+      "AmplifyAppId": "d1v0u32f6pctiw"
+    }
+  },
+  "auth": {
+    "planningpoker12132eed": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-planningpoker-dev-93436-deployment/amplify-cfn-templates/auth/planningpoker12132eed-cloudformation-template.json",
+        "logicalId": "authplanningpoker12132eed"
+      },
+      "lastPushTimeStamp": "2024-03-13T14:43:15.661Z",
+      "output": {
+        "UserPoolId": "us-east-2_7G6MukHUf",
+        "AppClientIDWeb": "161eu2nu7itoslj1qmopdnlo2v",
+        "AppClientID": "12k74klnu93469ji9uqfv2el7g",
+        "IdentityPoolId": "us-east-2:3f11c72b-6413-415e-8a4b-87b3a81b3330",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-2:864817670822:userpool/us-east-2_7G6MukHUf",
+        "IdentityPoolName": "planningpoker12132eed_identitypool_12132eed__dev",
+        "UserPoolName": "planningpoker12132eed_userpool_12132eed"
+      },
+      "lastPushDirHash": "E4RMOtGpKhBDUJgkTaN3xCU7CDU="
+    }
+  }
+}
