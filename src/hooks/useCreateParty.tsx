@@ -7,7 +7,8 @@ export function useCreateParty() {
   const router = useRouter();
 
   const axios = axiosCreator.create({
-    baseURL: "http://localhost:8080",
+    //http://localhost:8080
+    baseURL: "https://pragma-websocket-server.onrender.com",
     headers: {
       "Content-Type": "application/json",
     },

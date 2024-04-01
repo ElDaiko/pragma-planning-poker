@@ -8,8 +8,8 @@ import { Player } from "../types/player";
 import { AmountOfVotes } from "@/types/amountVotes";
 
 export const PartyContext = createContext<partyContextType | null>(null);
-
-const socket = io("http://localhost:8080", {
+//http://localhost:8080
+const socket = io("https://pragma-websocket-server.onrender.com", {
   reconnection: false  //El usuario no se reconecta automatimaticamente
 })
 
